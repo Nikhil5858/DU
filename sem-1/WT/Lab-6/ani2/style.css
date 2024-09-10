@@ -1,0 +1,18 @@
+p{
+    font-size: larger;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.container::first-line{
+    font-size: 30px;
+    color: blueviolet;
+}
+p:hover{
+    color:yellowgreen ;
+}
+.container::first-letter{
+    font-size: 33px;
+    color: brown;
+}
+a:hover{
+    color: orange;
+}

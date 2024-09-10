@@ -1,0 +1,29 @@
+.container{
+    height: 300px;
+    width: 300px;
+    background-color: aquamarine;
+    animation-duration: 5s;
+    animation-name: animation1;
+    animation-iteration-count: infinite;
+    position: relative;
+    animation-timing-function: linear;
+}
+@keyframes animation1{
+    0% {background-color : yellow; top: 0px;left: 0px;}
+    25% {background-color: aquamarine;top:0px ;left: 450px;}
+    50% {background-color:chocolate ;top: 450px; left: 450px;}
+    75% {background-color:bisque ;top: 450px; left: 0px; }
+    100% {background-color: teal;top: 0px; left: 0px;}
+}
+
+
+
+
+
+
+
+
+
+
+
+

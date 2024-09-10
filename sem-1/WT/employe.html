@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Account</title>
+</head>
+<body>
+    <h2>Create Account</h2>
+    <form>
+        <table>
+            <tr>
+                <th>First name *</th>
+                <td><input type="text" name="first_name"></td>
+            </tr>
+            <tr>
+                <th>Last name *</th>
+                <td><input type="text" name="last_name"></td>
+            </tr>
+            <tr>
+                <th>Email *</th>
+                <td><input type="email" name="email"></td>
+            </tr>
+            <tr>
+                <th>Password *</th>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <th>Confirm Password *</th>
+                <td><input type="password" name="confirm_password"></td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>
+                    <input type="radio" name="gender" value="male"> Male
+                    <input type="radio" name="gender" value="female"> Female
+                </td>
+            </tr>
+            <tr>
+                <th>Hobbies</th>
+                <td>
+                    <input type="checkbox" name="hobbies" value="music"> Music
+                    <input type="checkbox" name="hobbies" value="sports"> Sports
+                    <input type="checkbox" name="hobbies" value="travel"> Travel
+                    <input type="checkbox" name="hobbies" value="movies"> Movies
+                </td>
+            </tr>
+            <tr>
+                <th>Source of Income</th>
+                <td>
+                    <select name="income_source">
+                        <option value="employed">Employed</option>
+                        <option value="unemployed">Unemployed</option>
+                        <option value="student">Student</option>
+                        <option value="retired">Retired</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Income</th>
+                <td><input type="range" name="income" min="0" max="100000" value="20000"> 20K</td>
+            </tr>
+            <tr>
+                <th>Upload Profile Picture</th>
+                <td><input type="file" name="profile_picture"></td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td><input type="number" name="age" value="18"></td>
+            </tr>
+            <tr>
+                <th>Bio</th>
+                <td><textarea name="bio"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Create</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
