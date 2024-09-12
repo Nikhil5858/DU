@@ -12,6 +12,7 @@ public class Third {
         int num3 = sc.nextInt();
 
         int total = (num1>num2 && num1>num3)?num1:(num2>num1&&num2>num3)?num2:num3;
-        System.out.println("Number is Big"+total);
+        System.out.println(total +" Number is Big");
+        sc.close();
     }
 }
