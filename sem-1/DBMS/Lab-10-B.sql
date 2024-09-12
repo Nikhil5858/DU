@@ -80,20 +80,25 @@ on c.com_id = i.pro_com
 where i.pro_price>350
 group by c.com_name
 
-
 --------------------------------------------------
 --3
-select c.com_name,max(i.pro_name),i.pro_price
-from company_master as c
-join item_master as i
-on c.com_id = i.pro_com
-group by c.com_name
+select im.pro_name,im.pro_price,c.com_name
+from item_master as im
+join company_master as c
+on im.pro_com = c.com_id
+
+--order by c.com_name
+
 
 --4
-select e.emp_idno,e.empfname,e.emp_lname,ed.dpt_name
-from emp_details as e
-WHERE e.emp_lname IN ('Gabriel', 'Dosio')
+select emp_idno ,emp_fname,emp_lname,emp_dept 
+from emp_details
+WHERE emp_lname IN ('Gabriel', 'Dosio')
 
+--5
+select emp_idno ,emp_fname,emp_lname,emp_dept 
+from emp_details
+WHERE emp_dept IN (89,63)
 
 
 
