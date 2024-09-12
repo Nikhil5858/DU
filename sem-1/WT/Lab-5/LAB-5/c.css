@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin: 2%;
+    }
+.HeadFoot{
+    background-color: black;
+    height: 50px;
+    width: 100%;
+}
+.box{
+    border: 1px solid black;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.header{
+    background-color: red;
+    height: 100px;
+    width: 100%;
+}
+.sidebar{
+    height: 400px;
+    width: 20%;
+    background-color: blue;
+    float: left;
+}
+.main{
+    height: 400px;
+    background-color: yellow;
+}
+.rightbar{
+    height: 250px;
+    width: 20%;
+    background-color: green;
+    float: right;
+}
+.footer{
+    background-color: skyblue;
+    height: 50px;
+}

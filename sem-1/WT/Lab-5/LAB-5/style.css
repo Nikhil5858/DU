@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    height: 100%;
+    width: 100%;
+}
+.navbar{
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+}
+.navbar .logo{
+    float: left;
+    width: 20%;
+    height: 100%;
+    border: 3px solid black;
+    background-color: white;
+}
+.navbar .img{
+    height: 100px;
+}
+.navbar .links{
+    width: 100%;
+    border: 3px solid red;
+    background-color: aqua;
+    height: 100%;
+}
+.links .childLink{
+    font-size: 30px;
+    padding: 50px;
+    margin: 20px;
+}
+.sidebar{
+    width: 30%;
+    border: 2px solid rebeccapurple;
+    float: left;
+    height: 541.5px;
+}
+.box{
+    border: 2px solid black;
+    width: 30%;
+    text-align: center;
+    margin-left: 30%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.content{
+    width: 100%;
+    border: 2px sold brown;
+}
+.contentBox{
+    border: 2px solid pink;
+    overflow: hidden;
+}
+.grop{
+    border: 2px solid gray;
+    width: 90%;
+    float: left;
+    margin: 5%;
+    text-align: center;
+}
+.gropChild
+{
+    border: 2px solid gray;
+    width: 40%;
+    height: 100px;
+    float: left;
+    margin: 3%;
+}
+.gropChild2
+{
+    border: 2px solid gray;
+    width: 25%;
+    height: 100px;
+    float: left;
+    margin: 3%;
+}
+.footer{
+    text-align: center;
+    width: 100%;
+    height: 111px;
+    border: 2px solid dodgerblue ;
+}
