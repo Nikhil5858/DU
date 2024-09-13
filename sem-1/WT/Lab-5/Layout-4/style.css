@@ -5,7 +5,7 @@
 body{
     margin: 2%;
     }
-.HeadFoot{
+.container{
     background-color: black;
     height: 50px;
     width: 100%;
@@ -30,7 +30,7 @@ body{
     height: 400px;
     background-color: yellow;
 }
-.rightbar{
+.rightside{
     height: 250px;
     width: 20%;
     background-color: green;
