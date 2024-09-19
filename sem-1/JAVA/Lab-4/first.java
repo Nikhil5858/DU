@@ -1,26 +1,20 @@
-import java.util.Scanner;
-
-public class ConsonantVowelCounter {
+import java.util.*;
+public class first{
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a line:");
-        String line = scanner.nextLine();
-        scanner.close();
-
-        int vowelCount = 0;
-        int consonantCount = 0;
-
-        for (char c : line.toLowerCase().toCharArray()) {
-            if (c >= 'a' && c <= 'z') {
-                if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
-                    vowelCount++;
-                } else {
-                    consonantCount++;
-                }
+        int vowel = 0;
+        int consonet = 0;
+        System.out.println("Enter String");
+        Scanner sc = new Scanner(System.in);
+        String arrlength = sc.nextLine();
+        for(int i=0;i<arrlength.length();i++){
+            if (arrlength.charAt(i) == 'a' ||arrlength.charAt(i) == 'A'|| arrlength.charAt(i) == 'e'|| arrlength.charAt(i) == 'E' || arrlength.charAt(i) == 'i' || arrlength.charAt(i) == 'I' || arrlength.charAt(i) == 'o' || arrlength.charAt(i) == 'O' || arrlength.charAt(i) == 'u' || arrlength.charAt(i) == 'U') {
+                vowel ++;                
+            }
+            else{
+                consonet ++;
             }
         }
-
-        System.out.println("Vowels: " + vowelCount);
-        System.out.println("Consonants: " + consonantCount);
+        System.out.println("String Have Vowels "+vowel+" And "+consonet+" Consonent");
+        sc.close();
     }
 }
