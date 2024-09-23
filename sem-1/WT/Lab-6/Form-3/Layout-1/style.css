@@ -1,0 +1,27 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    text-align: center;
+}
+.one{
+    height: 10vh;
+    width: 30%;
+    background-color:blue ;
+    float: left;
+}
+.two{
+    height: 10vh;
+    width: 100%;
+    background-color:violet ;
+}
+.three{
+    height: 10vh;
+    width: 30%;
+    float: right;
+    background-color: rgb(197, 47, 122);
+}
+.four{
+    height: 10vh;
+    width: 70%;
+    background-color: rgb(212, 165, 189);
+}

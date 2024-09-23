@@ -1,0 +1,45 @@
+*{
+    background-color: #adff2f;
+    padding: 0%;
+}
+.header{
+    border: 2px solid black;
+    text-align: center;
+    height: 10vh;
+    width: 100%;
+    background-color: green;
+}
+.menu{
+    border: 2px solid black;
+    text-align: center;
+    margin-top: 8px;
+    height: 10vh;
+    width: 100%;
+    background-color: rgb(21, 151, 226);
+}
+.sidebar{
+    margin-top: 8px;
+    border: 2px solid black;
+    text-align: center;
+    height: 65vh;
+    width: 20%;
+    float: left;
+    background-color: blue;
+}
+.content{
+    border: 1px solid black;
+    float: right;
+    margin-top: 8px;
+    text-align: center;
+    height: 65vh;
+    width: 79.5%;
+    background-color: violet;
+}
+.footer{
+    border: 2px solid black;
+    text-align: center;
+    height: 10vh;
+    width: 100%;
+    background-color: orangered;
+    margin-top: 32.5%;
+}
