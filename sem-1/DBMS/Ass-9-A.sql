@@ -27,17 +27,25 @@ insert into village values (101,'raiya',1),
 (106,'Dhoraji',5)
 
 
-select v.name from village v
+select v.name 
+from village v
 inner join city c
 on c.cityid = v.cityid
 where c.name='rajkot'
 
-select c.name,c.pincode,v.name from city c
+select c.name,c.pincode,v.name  as VillageName
+from city c
 inner join village v
 on c.cityid = v.cityid
 
+select c.name,count(v.name)
+from city as c
+inner join village as v
+on c.cityid = v.cityid
+group by c.name
+having count (v.vid)>1
 
-
+select name from city where cityid not in (select cityid from village)
 
 
 

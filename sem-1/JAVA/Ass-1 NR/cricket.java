@@ -22,7 +22,7 @@ public class cricket {
             while (true) {
                 System.out.println("Enter runs for ball " + (i + 1));
                 runs = sc.nextInt();
-                if (runs == 1 || runs == 2 || runs == 4 || runs == 6 || runs == -1) {
+                if (runs == 1 || runs == 2 || runs == 4 || runs == 6 || runs == -1) {//run>=0&&run<=6
                     break;
                 }
                 else{
