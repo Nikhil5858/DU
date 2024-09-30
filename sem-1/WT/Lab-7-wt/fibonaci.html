@@ -8,15 +8,23 @@
 <body>
     <script>
         let num1 = (Number(prompt("Enter Number : ")))
-        if (num1 <=0 ) {
-            console.log('Enter Number greater than 0 : ')
+        let a = 0
+        let b = 1
+        if(num1 == 0){
+            document.writeln(a)
+        }
+        else if (num1 == 1){
+            document.writeln(a+ " " +b)
         }
         else{
-            let fibo=0
-            for (let i = 1; i <= num1; i++) {
-                fibo +=i;                
+            let fibo
+            document.writeln(a+ " " +b)
+            for (let i = 2; i <= num1; i++) {
+                fibo = a + b
+                a = b
+                b = fibo                
+                document.writeln(""+fibo)
             }
-            console.log(fibo)
         }
     </script>
 </body>

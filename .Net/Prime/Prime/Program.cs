@@ -10,21 +10,21 @@ namespace Prime
     {
         public void Prime1(int num)
         {
-            bool flag = false;
+            bool flag = true;
             for (int i = 2; i < num; i++)
             {
                 if (num%i== 0)
                 {
-                    flag = true;
+                    flag = false;
                 }
             }   
             if (flag == true)
             {
-                Console.WriteLine("Number Is Not Prime");
+                Console.WriteLine("Number Is Prime");
             }
             else
             {
-                Console.WriteLine("Number Is Prime");
+                Console.WriteLine("Number Is Not Prime");
             }
         }
         static void Main(string[] args)
