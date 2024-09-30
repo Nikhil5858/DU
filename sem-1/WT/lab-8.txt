@@ -2,17 +2,14 @@
 
 
 
-function printFactors(n) {
-    console.log("Factors of " + n + ":");
-    for (let i = 1; i <= n; i++) {
-        if (n % i === 0) {
-            console.log(i);
-        }
+let num = parseInt(prompt("Enter a number: "));
+console.log("Factors of " + num + ":");
+
+for (let i = 1; i <= num; i++) {
+    if (num % i === 0) {
+        console.log(i);
     }
 }
-
-let num = prompt("Enter a number: ");
-printFactors(parseInt(num));
 
 
 
@@ -20,59 +17,39 @@ printFactors(parseInt(num));
 
 
 
-function isPrime(num) {
-    if (num <= 1) return false;
-    for (let i = 2; i * i <= num; i++) {
-        if (num % i === 0) return false;
-    }
-    return true;
-}
-
-function printPrimes(start, end) {
-    console.log("Prime numbers between " + start + " and " + end + ":");
-    for (let i = start; i <= end; i++) {
-        if (isPrime(i)) {
-            console.log(i);
-        }
-    }
-}
-
 let start = parseInt(prompt("Enter start of range: "));
 let end = parseInt(prompt("Enter end of range: "));
-printPrimes(start, end);
+console.log("Prime numbers between " + start + " and " + end + ":");
+
+for (let i = start; i <= end; i++) {
+    if (i <= 1) continue;
+    let isPrime = true;
+    for (let j = 2; j * j <= i; j++) {
+        if (i % j === 0) {
+            isPrime = false;
+            break;
+        }
+    }
+    if (isPrime) {
+        console.log(i);
+    }
+}
 
 
 
 3. Display patterns
 
 
-Here's an example of a simple pattern:
-
-
-
-function printPattern(n) {
-    for (let i = 1; i <= n; i++) {
-        let row = "";
-        for (let j = 1; j <= i; j++) {
-            row += "* ";
-        }
-        console.log(row);
-    }
-}
 
 let num = parseInt(prompt("Enter number of rows: "));
-printPattern(num);
 
-
-
-Output:
-
-
-
-* 
-* * 
-* * * 
-* * * * 
+for (let i = 1; i <= num; i++) {
+    let row = "";
+    for (let j = 1; j <= i; j++) {
+        row += "* ";
+    }
+    console.log(row);
+}
 
 
 
@@ -80,14 +57,16 @@ Output:
 
 
 
-function gcd(a, b) {
-    if (b === 0) return a;
-    return gcd(b, a % b);
-}
-
 let num1 = parseInt(prompt("Enter first number: "));
 let num2 = parseInt(prompt("Enter second number: "));
-console.log("GCD of " + num1 + " and " + num2 + ": " + gcd(num1, num2));
+
+while (num2 !== 0) {
+    let temp = num2;
+    num2 = num1 % num2;
+    num1 = temp;
+}
+
+console.log("GCD of " + num1 + " and " + num2 + ": " + num1);
 
 
 
@@ -95,12 +74,8 @@ console.log("GCD of " + num1 + " and " + num2 + ": " + gcd(num1, num2));
 
 
 
-function multiplyDigits(num) {
-    let firstDigit = Math.floor(num / 10);
-    let secondDigit = num % 10;
-    let result = Math.pow(firstDigit, secondDigit);
-    console.log("Result: " + result);
-}
-
 let num = parseInt(prompt("Enter 2-digit number: "));
-multiplyDigits(num);
+let firstDigit = Math.floor(num / 10);
+let secondDigit = num % 10;
+let result = Math.pow(firstDigit, secondDigit);
+console.log("Result: " + result);
