@@ -1,59 +1,95 @@
 import java.util.Scanner;
 
-public class cricket {
+public class Cricket {
+    static Scanner sc = new Scanner(System.in);
+    static int totalRuns, lostWickets, overs;
+
     public static void main(String[] args) {
-        
-        Scanner sc = new Scanner(System.in);
+        welcomeMessage();
+        overs = getNumberOfOvers();
+        playGame();
+        displayGameResults();
+        sc.close();
+    }
+
+    static void welcomeMessage() {
         System.out.println();
-        System.out.println("Enter Number Of Over You Want to play : ");
-        System.out.println("Press -1 to wicket : ");
+        System.out.println("Welcome to Cricket Game!");
+        System.out.println("Press 'W' to indicate a wicket");
+        System.out.println("Press 'WD' to indicate a wide ball");
+    }
 
-        int overs = sc.nextInt();
-        int totalballs = overs * 6;
-        int lostwicket = 0;
-        int totalruns = 0;
+    static int getNumberOfOvers() {
+        System.out.println();
+        System.out.print("Enter Number of Overs: ");
+        return sc.nextInt();
+    }
 
-        int[] runsinoneball = new int[totalballs];
+    static void playGame() {
+        int totalBalls = overs * 6;
+        int[] runsInOneBall = new int[totalBalls];
 
-        for(int i = 0;i<totalballs;i++){
+        for (int i = 0; i < totalBalls; i++) {
+            String input = getRunsForBall(i);
 
-            int runs;
-
-            while (true) {
-                System.out.println("Enter runs for ball " + (i + 1));
-                runs = sc.nextInt();
-                if (runs == 1 || runs == 2 || runs == 4 || runs == 6 || runs == -1) {//run>=0&&run<=6
-                    break;
+            if (input.equalsIgnoreCase("W")) {
+                lostWickets++;
+                System.out.println("Wicket Down!!");
+            } else if (input.equalsIgnoreCase("WD")) {
+                totalRuns++;
+                System.out.println("Wide ball! 1 run added.");
+            } else {
+                int runs = Integer.parseInt(input);
+                if (runs == 1 || runs == 2 || runs == 4 || runs == 6) {
+                    totalRuns += runs;
+                    runsInOneBall[i] = runs;
+                } else {
+                    System.out.println("Invalid input!");
+                    i--; // decrement i to retry input
                 }
-                else{
+            }
+
+            if (lostWickets == 10) {
+                System.out.println("All wickets are fallen!");
+                break;
+            }
+
+            if ((i + 1) % 6 == 0) {
+                System.out.println("Over " + ((i + 1) / 6) + " is complete.");
+            }
+        }
+    }
+
+    static String getRunsForBall(int ballNumber) {
+        int overNumber = (ballNumber / 6) + 1;
+        int ballInOver = (ballNumber % 6) + 1;
+    
+        while (true) {
+            System.out.print("Enter runs for Over " + overNumber + ", Ball " + ballInOver + ": ");
+            String input = sc.next();
+    
+            if (input.equalsIgnoreCase("W") || input.equalsIgnoreCase("WD")) {
+                return input;
+            } else {
+                try {
+                    int runs = Integer.parseInt(input);
+                    if (runs >= 0 && runs <= 6) {
+                        return input;
+                    } else {
+                        System.out.println("Invalid input!");
+                    }
+                } catch (NumberFormatException e) {
                     System.out.println("Invalid input!");
                 }
             }
-
-            if (runs == -1) {
-                lostwicket++;
-                System.out.println("Wicket Down!!");
-            }else{
-                totalruns +=runs;
-                runsinoneball[i] =runs;
-            }
-
-            if (lostwicket == 10) {
-                System.out.println("All Wicket are Fallen!!!");
-                break;
-            }
-            if ((i + 1)%6 == 0) {
-                System.out.println("Over " + ((i + 1) / 6) + " is complete.");
-            }
-
         }
+    }    
 
-        double avgperover = totalruns / overs;
-
-        System.out.println("-------- Game Results --------");
-        System.out.println("Total Runs : "+totalruns);
-        System.out.println("Total Wickets : "+lostwicket);
-        System.out.println("Average per Over : "+avgperover);
-        sc.close();
+    static void displayGameResults() {
+        double averagePerOver = (double) totalRuns / overs;
+        System.out.println("\n-------- Game Results --------");
+        System.out.println("Total Runs: " + totalRuns);
+        System.out.println("Total Wickets: " + lostWickets);
+        System.out.println("Average per Over: " + averagePerOver);
     }
 }

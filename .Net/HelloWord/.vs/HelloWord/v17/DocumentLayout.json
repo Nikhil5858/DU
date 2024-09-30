@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\DU\\.Net\\HelloWord\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EFB234BE-7981-4771-9B66-9D1B82AD250E}|HelloWord\\HelloWord.csproj|d:\\du\\.net\\helloword\\helloword\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFB234BE-7981-4771-9B66-9D1B82AD250E}|HelloWord\\HelloWord.csproj|solutionrelative:helloword\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\DU\\.Net\\HelloWord\\HelloWord\\Program.cs",
+              "RelativeDocumentMoniker": "HelloWord\\Program.cs",
+              "ToolTip": "D:\\DU\\.Net\\HelloWord\\HelloWord\\Program.cs",
+              "RelativeToolTip": "HelloWord\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwCMAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T05:15:16.665Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
