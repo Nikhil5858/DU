@@ -1,7 +1,0 @@
-D:\DU\.Net\Factor\Factor\obj\Debug\Factor.csproj.AssemblyReference.cache
-D:\DU\.Net\Factor\Factor\obj\Debug\Factor.csproj.CoreCompileInputs.cache
-D:\DU\.Net\Factor\Factor\bin\Debug\Factor.exe.config
-D:\DU\.Net\Factor\Factor\bin\Debug\Factor.exe
-D:\DU\.Net\Factor\Factor\bin\Debug\Factor.pdb
-D:\DU\.Net\Factor\Factor\obj\Debug\Factor.exe
-D:\DU\.Net\Factor\Factor\obj\Debug\Factor.pdb

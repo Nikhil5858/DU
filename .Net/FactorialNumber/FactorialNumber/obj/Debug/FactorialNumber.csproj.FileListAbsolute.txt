@@ -1,7 +1,0 @@
-D:\DU\.Net\FactorialNumber\FactorialNumber\bin\Debug\FactorialNumber.exe.config
-D:\DU\.Net\FactorialNumber\FactorialNumber\bin\Debug\FactorialNumber.exe
-D:\DU\.Net\FactorialNumber\FactorialNumber\bin\Debug\FactorialNumber.pdb
-D:\DU\.Net\FactorialNumber\FactorialNumber\obj\Debug\FactorialNumber.csproj.AssemblyReference.cache
-D:\DU\.Net\FactorialNumber\FactorialNumber\obj\Debug\FactorialNumber.csproj.CoreCompileInputs.cache
-D:\DU\.Net\FactorialNumber\FactorialNumber\obj\Debug\FactorialNumber.exe
-D:\DU\.Net\FactorialNumber\FactorialNumber\obj\Debug\FactorialNumber.pdb

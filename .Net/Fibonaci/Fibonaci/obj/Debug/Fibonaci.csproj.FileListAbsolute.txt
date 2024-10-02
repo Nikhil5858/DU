@@ -1,7 +1,0 @@
-D:\DU\.Net\Fibonaci\Fibonaci\bin\Debug\Fibonaci.exe.config
-D:\DU\.Net\Fibonaci\Fibonaci\bin\Debug\Fibonaci.exe
-D:\DU\.Net\Fibonaci\Fibonaci\bin\Debug\Fibonaci.pdb
-D:\DU\.Net\Fibonaci\Fibonaci\obj\Debug\Fibonaci.csproj.AssemblyReference.cache
-D:\DU\.Net\Fibonaci\Fibonaci\obj\Debug\Fibonaci.csproj.CoreCompileInputs.cache
-D:\DU\.Net\Fibonaci\Fibonaci\obj\Debug\Fibonaci.exe
-D:\DU\.Net\Fibonaci\Fibonaci\obj\Debug\Fibonaci.pdb

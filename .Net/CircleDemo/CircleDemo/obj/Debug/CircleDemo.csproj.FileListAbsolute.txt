@@ -1,7 +1,0 @@
-D:\DU\.Net\CircleDemo\CircleDemo\bin\Debug\CircleDemo.exe.config
-D:\DU\.Net\CircleDemo\CircleDemo\bin\Debug\CircleDemo.exe
-D:\DU\.Net\CircleDemo\CircleDemo\bin\Debug\CircleDemo.pdb
-D:\DU\.Net\CircleDemo\CircleDemo\obj\Debug\CircleDemo.csproj.AssemblyReference.cache
-D:\DU\.Net\CircleDemo\CircleDemo\obj\Debug\CircleDemo.csproj.CoreCompileInputs.cache
-D:\DU\.Net\CircleDemo\CircleDemo\obj\Debug\CircleDemo.exe
-D:\DU\.Net\CircleDemo\CircleDemo\obj\Debug\CircleDemo.pdb

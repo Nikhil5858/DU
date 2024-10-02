@@ -1,7 +1,0 @@
-D:\DU\.Net\Prime\Prime\bin\Debug\Prime.exe.config
-D:\DU\.Net\Prime\Prime\bin\Debug\Prime.exe
-D:\DU\.Net\Prime\Prime\bin\Debug\Prime.pdb
-D:\DU\.Net\Prime\Prime\obj\Debug\Prime.csproj.AssemblyReference.cache
-D:\DU\.Net\Prime\Prime\obj\Debug\Prime.csproj.CoreCompileInputs.cache
-D:\DU\.Net\Prime\Prime\obj\Debug\Prime.exe
-D:\DU\.Net\Prime\Prime\obj\Debug\Prime.pdb

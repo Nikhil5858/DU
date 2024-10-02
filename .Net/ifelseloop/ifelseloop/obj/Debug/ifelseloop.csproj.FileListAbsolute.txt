@@ -1,7 +1,0 @@
-D:\DU\.Net\ifelseloop\ifelseloop\bin\Debug\ifelseloop.exe.config
-D:\DU\.Net\ifelseloop\ifelseloop\bin\Debug\ifelseloop.exe
-D:\DU\.Net\ifelseloop\ifelseloop\bin\Debug\ifelseloop.pdb
-D:\DU\.Net\ifelseloop\ifelseloop\obj\Debug\ifelseloop.csproj.AssemblyReference.cache
-D:\DU\.Net\ifelseloop\ifelseloop\obj\Debug\ifelseloop.csproj.CoreCompileInputs.cache
-D:\DU\.Net\ifelseloop\ifelseloop\obj\Debug\ifelseloop.exe
-D:\DU\.Net\ifelseloop\ifelseloop\obj\Debug\ifelseloop.pdb
