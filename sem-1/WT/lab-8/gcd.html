@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCD Calculator</title>
+</head>
+<body>
+    <script>
+        let num1 = Number(prompt("Enter Number 1: "));
+        let num2 = Number(prompt("Enter Number 2: "));
+        let gcd = 1;
+
+        for (let i = 1; i <= Math.min(num1, num2); i++) {
+            if (num1 % i == 0 && num2 % i == 0) {
+                gcd = i; 
+            }
+        }
+
+        document.writeln(`The GCD of ${num1} and ${num2} is: ${gcd}`);
+    </script>
+</body>
+</html>
