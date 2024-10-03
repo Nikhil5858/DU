@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <fieldset>
+        <legend>Form - 1</legend>
+        <label for="">Enter Value : </label>
+        <input type="number" id="txt1"><br><br>
+        <button type="button" onclick="ChangeValue()" id="btn1">Submit</button><br><br>
+        <textarea name="tarea1" id="tarea1"></textarea>
+    </fieldset>
+    <script>
+        function ChangeValue() {
+            let num = document.getElementById('txt1').value;
+            num = Math.sqrt(Number(num))
+            document.getElementById('tarea1').value = num;
+
+        }
+    </script>
+</body>
+</html>

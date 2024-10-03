@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acending</title>
+</head>
+<body>
+    <script>
+
+        let array = []
+        let size = (Number(prompt("Enter Size of Array : ")))
+        for (let i = 0; i < size; i++) {
+            array[i] = (Number(prompt("Enter Number : ")))
+            document.writeln(array[i])
+        }
+        array.sort((a,b) => a-b)
+        
+        document.writeln("<br> Acending : " + array)
+    </script>
+</body>
+</html>
+
+
+<!-- Sorting logic
+for (let i = 0; i < size - 1; i++) {
+    for (let j = i + 1; j < size; j++) {
+        if (array[i] > array[j]) {
+            // Swap elements
+            let temp = array[i]
+            array[i] = array[j]
+            array[j] = temp
+        }
+    }
+} -->
