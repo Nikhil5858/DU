@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort</title>
+</head>
+<body>
+    <script>
+        let num = Number(prompt("Enter number of elements: "));
+        let array = [];
+
+        for (let i = 0; i < num; i++) {
+            array[i] = Number(prompt(`Enter element ${i + 1}: `));
+        }
+
+        for (let i = 0; i < num - 1; i++) {
+            for (let j = 0; j < num - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    let temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+
+        document.writeln("<br>Sorted: " + array);
+
+    </script>
+</body>
+</html>
+
