@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty</title>
+</head>
+<body>
+
+    <ul id="Factlist"></ul>
+
+    <script>
+        let array = [
+            "A","B","C","D"
+        ]
+
+        let faculty = document.getElementById('Factlist')
+        
+        for (let i = 0; i < array.length; i++) 
+        {
+
+            let fact = document.createElement('li')
+            fact.textContent = array[i]
+            faculty.appendChild(fact)
+        }
+    </script>
+</body>
+</html>

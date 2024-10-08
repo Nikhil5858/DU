@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<body>
+
+    <label for="num1">Number : 1</label>
+    <input type="text" id="num1"><br><br>
+    <label for="num2">Number : 2</label>
+    <input type="text" id="num2"><br><br>
+
+    <button type="button" onclick="Calculator('+')">+</button>
+    <button type="button" onclick="Calculator('-')">-</button>
+    <button type="button" onclick="Calculator('*')">*</button>
+    <button type="button" onclick="Calculator('/')">/</button><br><br>
+
+    <span id="result">Result : </span>
+
+    <script>
+        function Calculator(Operator){
+            
+            let num1 = parseInt(document.getElementById('num1').value)
+            let num2 = parseInt(document.getElementById('num2').value)
+            let result = document.getElementById('result')
+
+                if (Operator === '+') {
+                    result = (num1+num2)
+                }
+                else if(Operator === '-'){
+                    result = (num1-num2)
+                }
+                else if(Operator === '*'){
+                    result = (num1*num2)
+                }
+                else if(Operator === '/'){
+                    if (num2 !== 0) {
+                        result = (num1/num2)
+                    } else {
+                        alert("Divison by zero not allowed!")
+                        return
+                    }
+                }
+                else{
+                    alert("Invalid Choice!")
+                    return
+                }
+                document.getElementById('result').innerText = "Result : " + result
+        }
+    </script>
+</body>
+
+</html>

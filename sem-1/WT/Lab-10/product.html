@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product</title>
+  </head>
+  <body>
+    <ol id="product"></ol>
+    <script>
+      let num = parseInt(prompt("Enter Number of Products to add: "));
+      let array = [];
+      let product = document.getElementById("product");
+
+      for (let i = 0; i < num; i++) {
+        array[i] = prompt("Enter Name of Product " + (i + 1) + ": ");
+        let pro = document.createElement("li");
+        pro.textContent = array[i];
+        product.appendChild(pro);
+      }
+    </script>
+  </body>
+</html>

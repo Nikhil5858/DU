@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+</head>
+<body>
+
+    <h1>Student Name</h1>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody id="Studlist">
+        </tbody>
+    </table>
+
+    <script>
+        let name = prompt(parseInt("Enter Number of Student Add"))
+        let array = []
+
+        let student = document.getElementById('Studlist')
+        
+        for (let i = 0; i < name; i++) 
+        {
+            array[i] = (String(prompt(`Enter ${i + 1} Name : `)))
+            let stud = document.createElement('tbody')
+            stud.textContent = array[i]
+            student.appendChild(stud)
+        }
+    </script>
+</body>
+</html>
