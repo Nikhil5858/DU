@@ -1,0 +1,120 @@
+-- Part A
+
+-- 1. Function to print "Hello World"
+CREATE FUNCTION hello_world()
+RETURNS VARCHAR(50)
+AS
+BEGIN
+    RETURN 'Hello World';
+END;
+
+-- 2. Function which returns the addition of two numbers
+CREATE FUNCTION add_two_numbers(@num1 INT, @num2 INT)
+RETURNS INT
+AS
+BEGIN
+    RETURN @num1 + @num2;
+END;
+
+-- 3. Function to return the cube of a given number
+CREATE FUNCTION cube_of_number(@num INT)
+RETURNS INT
+AS
+BEGIN
+    RETURN @num * @num * @num;
+END;
+
+-- 4. Function to check whether the given number is ODD or EVEN
+CREATE FUNCTION check_odd_even(@num INT)
+RETURNS VARCHAR(10)
+AS
+BEGIN
+    IF (@num % 2 = 0)
+        RETURN 'EVEN';
+    ELSE
+        RETURN 'ODD';
+END;
+
+-- 5. Function which returns a table with details of a person whose first name starts with 'B'
+CREATE FUNCTION person_with_b()
+RETURNS @result TABLE (
+    person_id INT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    other_details VARCHAR(MAX)
+)
+AS
+BEGIN
+    INSERT INTO @result
+    SELECT person_id, first_name, last_name, other_details
+    FROM person
+    WHERE first_name LIKE 'B%';
+
+    RETURN;
+END;
+
+-- 6. Function which returns a table with unique first names from the person table
+CREATE FUNCTION unique_first_names()
+RETURNS @result TABLE (
+    first_name VARCHAR(50)
+)
+AS
+BEGIN
+    INSERT INTO @result
+    SELECT DISTINCT first_name
+    FROM person;
+
+    RETURN;
+END;
+
+
+-- Part B
+
+-- 1. Function to compare two integers and return the comparison result (Using CASE statement)
+CREATE FUNCTION compare_numbers(@num1 INT, @num2 INT)
+RETURNS VARCHAR(50)
+AS
+BEGIN
+    RETURN (
+        CASE 
+            WHEN @num1 > @num2 THEN 'First number is greater'
+            WHEN @num1 < @num2 THEN 'Second number is greater'
+            ELSE 'Both numbers are equal'
+        END
+    );
+END;
+
+-- 2. Function to print numbers from 1 to N (Using WHILE loop)
+CREATE FUNCTION print_numbers_to_n(@n INT)
+RETURNS @result TABLE (
+    number INT
+)
+AS
+BEGIN
+    DECLARE @i INT = 1;
+
+    WHILE @i <= @n
+    BEGIN
+        INSERT INTO @result VALUES (@i);
+        SET @i = @i + 1;
+    END;
+
+    RETURN;
+END;
+
+-- 3. Function to print the sum of even numbers between 1 to 20
+CREATE FUNCTION sum_of_even_numbers()
+RETURNS INT
+AS
+BEGIN
+    DECLARE @sum INT = 0;
+    DECLARE @i INT = 2;
+
+    WHILE @i <= 20
+    BEGIN
+        SET @sum = @sum + @i;
+        SET @i = @i + 2;
+    END;
+
+    RETURN @sum;
+END;
