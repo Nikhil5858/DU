@@ -1,0 +1,29 @@
+{id:101, name:'ANIL',bname: 'VRCE', amount : 1000.00,adate: '1-3-95'},
+{id:102, name:'SUNIL',bname: 'AJNI', amount : 5000.00,adate: '4-1-96'},
+{id:103, name:'MEHUL',bname: 'KAROLBAGH', amount : 3500.00,adate: '17-11-95'},
+{id:104, name:'MADHURI',bname: 'CHANDI', amount : 1200.00,adate: '17-12-95'},
+{id:105, name:'PRMOD',bname: 'M.G. ROAD', amount : 3000.00,adate: '27-3-96'},
+{id:106, name:'SANDIP',bname: 'ANDHERI', amount : 2000.00,adate: '31-3-96'},
+{id:107, name:'SHIVANI',bname: 'VIRAR', amount : 1000.00,adate: '5-9-95'},
+{id:108, name:'KRANTI',bname: 'NEHRU PLACE',  amount : 5000.00,adate: '2-7-95'}
+
+
+db.bankinfo.find()
+db.bankinfo.find().pretty()
+db.bankinfo.findOne()
+db.bankinfo.insertOne({id:109,name:'KIRTI',bname:'VIRAR',amount:3000,adate:'3-5-97'})
+db.bankinfo.insertMany([{id:110, name:'MITALI', bname:'ANDHERI', amount:4500.00,adate:4-9-95},{id:111 ,name:'RAJIV' ,bname :'NEHRU PLACE',amount :7000.00 ,adate:2-10-98}])
+db.bankinfo.find({}, {name:1,bname: 1, amount: 1})
+db.bankinfo.find().sort({name:1})
+db.bankinfo.find().sort({bname:-1})
+db.bankinfo.find().sort({id:1},{amount:-1})
+db.bankinfo.find().limit(2)
+db.bankinfo.find().skip(2).limit(1)
+db.bankinfo.find().skip(5).limit(2)
+db.bankinfo.find().itcount()
+db.bankinfo.findOne()
+db.bankinfo.find().sort({amount:-1})
+
+
+
+

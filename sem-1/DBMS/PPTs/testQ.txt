@@ -1,0 +1,383 @@
+Section 1: E-R Diagram Basics
+What does an E-R diagram represent?
+
+a) Logical structure of the database
+b) Physical structure of the database
+c) Pictorial representation of the database
+d) None of the above
+Which shape represents an entity in an E-R diagram?
+
+a) Oval
+b) Rectangle
+c) Diamond
+d) Triangle
+What is an entity in the context of an E-R diagram?
+
+a) A specific characteristic of data
+b) A person, place, or object
+c) A database schema
+d) A foreign key
+Section 2: Entity and Attribute
+What is an entity set?
+
+a) A group of related entities
+b) A collection of attributes
+c) A collection of relationships
+d) A group of entities of the same type
+Which of the following is NOT an attribute type?
+
+a) Derived attribute
+b) Simple attribute
+c) Composite attribute
+d) Weak attribute
+What symbol represents an attribute in an E-R diagram?
+
+a) Rectangle
+b) Diamond
+c) Oval
+d) Line
+Section 3: Types of Attributes
+Which of the following is a composite attribute?
+
+a) Address
+b) Phone number
+c) Age
+d) Roll number
+Which of the following attributes is multi-valued?
+
+a) Email address
+b) Name
+c) Date of birth
+d) Employee ID
+A derived attribute is:
+
+a) Stored directly in the database
+b) Calculated from other attributes
+c) A multi-valued attribute
+d) A key attribute
+Section 4: Relationships
+What does a diamond represent in an E-R diagram?
+
+a) Attribute
+b) Entity
+c) Relationship
+d) Key
+Which of the following is an example of a one-to-one relationship?
+
+a) Customer and Accounts
+b) Student and Faculty
+c) Customer and Loan
+d) Customer and Order
+In a one-to-many relationship:
+
+a) Each entity in A is associated with one entity in B
+b) Each entity in A is associated with multiple entities in B
+c) Each entity in B is associated with one entity in A
+d) Both b and c
+Section 5: Mapping Cardinality
+What is mapping cardinality?
+
+a) Number of entities involved in a relationship
+b) Number of relationships an entity can have
+c) Maximum number of entity sets involved in a relationship
+d) None of the above
+Which of the following is an example of many-to-many relationship?
+
+a) Student and Course
+b) Employee and Department
+c) Teacher and Class
+d) Doctor and Patient
+A ternary relationship involves:
+
+a) Two entities
+b) Three entities
+c) More than three entities
+d) One entity
+Section 6: Specialization and Generalization
+Specialization refers to:
+
+a) Combining several entities into one
+b) Dividing an entity into sub-entities
+c) Removing redundant entities
+d) None of the above
+Generalization is a process of:
+
+a) Bottom-up approach
+b) Top-down approach
+c) Breaking an entity into multiple sub-entities
+d) Combining attributes
+In generalization, ISA stands for:
+
+a) Information Schema Attribute
+b) Is-A relationship
+c) Inherited Structure Attribute
+d) Internal Schema Alignment
+Section 7: Participation Constraints
+What does total participation mean?
+
+a) Every entity must participate in a relationship
+b) Some entities participate in a relationship
+c) All relationships are mandatory
+d) None of the above
+Partial participation is indicated by:
+
+a) Double line
+b) Dashed line
+c) Single line
+d) No line
+Section 8: Weak Entity Sets
+What is a weak entity set?
+
+a) An entity without a primary key
+b) An entity with multiple attributes
+c) An entity that has a composite key
+d) None of the above
+The discriminator attribute of a weak entity set is:
+
+a) A partial key that distinguishes entities
+b) The foreign key of the entity
+c) A derived attribute
+d) None of the above
+Section 9: Functional Dependencies
+What is a functional dependency?
+
+a) A relationship between attributes
+b) A dependency between tables
+c) When one attribute determines another
+d) A key constraint
+Which of the following is a trivial functional dependency?
+
+a) {A} → {B}
+b) {A} → {A}
+c) {A, B} → {A}
+d) None of the above
+Section 10: Normalization
+The first normal form (1NF) removes:
+
+a) Transitive dependencies
+b) Partial dependencies
+c) Multi-valued attributes
+d) Redundant data
+Second normal form (2NF) eliminates:
+
+a) Partial dependencies
+b) Transitive dependencies
+c) Composite attributes
+d) Multi-valued attributes
+A table is in BCNF if:
+
+a) It is in 2NF and 3NF
+b) It is in 3NF and every determinant is a candidate key
+c) It is in 4NF
+d) It has no functional dependencies
+Which of the following describes 3NF?
+
+a) Removes multivalued attributes
+b) Removes transitive dependencies
+c) Ensures no partial dependencies
+d) None of the above
+What is the primary objective of normalization?
+
+a) Increase redundancy
+b) Improve data retrieval
+c) Remove anomalies
+d) None of the above
+Section 11: Anomalies
+Which of the following is a type of anomaly?
+
+a) Insert anomaly
+b) Delete anomaly
+c) Update anomaly
+d) All of the above
+Insert anomaly occurs when:
+
+a) You cannot insert data due to lack of related data
+b) Data cannot be inserted without updating other data
+c) Redundant data is inserted
+d) None of the above
+Update anomaly occurs when:
+
+a) Data cannot be updated
+b) Inconsistent data appears after updates
+c) Data is deleted
+d) Data cannot be inserted
+Section 12: Decomposition
+What is a lossless decomposition?
+
+a) A decomposition where data is lost
+b) A decomposition that preserves all data
+c) A decomposition that introduces redundancy
+d) None of the above
+A lossy decomposition results in:
+
+a) Loss of some data during retrieval
+b) Redundancy in data
+c) Efficient retrieval of data
+d) None of the above
+Section 13: Fourth and Fifth Normal Forms
+A relation is in 4NF if:
+
+a) It has no multi-valued dependencies
+b) It is in BCNF and has no multi-valued dependencies
+c) It is in 3NF
+d) It is in 2NF
+A relation is in 5NF if:
+
+a) It has no functional dependencies
+b) It cannot be decomposed into smaller relations
+c) It is in BCNF
+d) It has no multi-valued dependencies
+Section 14: Miscellaneous
+The process of reducing a table to 1NF is known as:
+
+a) Decomposition
+b) Normalization
+c) Generalization
+d) Specialization
+Which of the following rules is part of Armstrong's axioms?
+
+a) Augmentation
+b) Transitivity
+c) Reflexivity
+d) All of the above
+An entity that is completely dependent on another entity for its existence is called:
+
+a) Strong entity
+b) Weak entity
+c) Primary entity
+d) Composite entity
+Which of the following is a key attribute?
+
+a) Unique identifier for an entity
+b) Derived from other attributes
+c) Multi-valued attribute
+d) Composite attribute
+Which attribute type cannot be divided further?
+
+a) Composite attribute
+b) Multi-valued attribute
+c) Simple attribute
+d) Derived attribute
+Which of the following is not a type of normalization?
+
+a) 1NF
+b) 2NF
+c) 5NF
+d) 6NF
+The decomposition of a relation into smaller relations without losing any data is called:
+
+a) Lossy decomposition
+b) Lossless decomposition
+c) Partial decomposition
+d) Functional decomposition
+Which normal form removes transitive dependency?
+
+a) 1NF
+b) 2NF
+c) 3NF
+d) BCNF
+A dependency in which one attribute is determined by another attribute is called:
+
+a) Multivalued dependency
+b) Functional dependency
+c) Transitive dependency
+d) Partial dependency
+A weak entity is represented by:
+
+a) Double rectangle
+b) Single rectangle
+c) Diamond
+d) Oval
+If an entity is associated with more than one entity using the same relationship, it is a:
+
+a) Ternary relationship
+b) One-to-many relationship
+c) Many-to-many relationship
+d) One-to-one relationship
+Which type of relationship represents a connection between three entities?
+
+a) Ternary relationship
+b) Binary relationship
+c) Unary relationship
+d) None of the above
+A multi-valued dependency is represented by:
+
+a) X →→ Y
+b) X → Y
+c) X → Z
+d) X → Y, Z
+A relation in 2NF removes:
+
+a) Partial dependencies
+b) Transitive dependencies
+c) Multivalued attributes
+d) Redundant data
+
+
+
+Answer=========
+
+Section 1: E-R Diagram Basics
+c) Pictorial representation of the database
+b) Rectangle
+b) A person, place, or object
+Section 2: Entity and Attribute
+d) A group of entities of the same type
+d) Weak attribute
+c) Oval
+Section 3: Types of Attributes
+a) Address
+a) Email address
+b) Calculated from other attributes
+Section 4: Relationships
+c) Relationship
+c) Customer and Loan
+d) Both b and c
+Section 5: Mapping Cardinality
+a) Number of entities involved in a relationship
+a) Student and Course
+b) Three entities
+Section 6: Specialization and Generalization
+b) Dividing an entity into sub-entities
+a) Bottom-up approach
+b) Is-A relationship
+Section 7: Participation Constraints
+a) Every entity must participate in a relationship
+c) Single line
+Section 8: Weak Entity Sets
+a) An entity without a primary key
+a) A partial key that distinguishes entities
+Section 9: Functional Dependencies
+c) When one attribute determines another
+b) {A} → {A}
+Section 10: Normalization
+c) Multi-valued attributes
+a) Partial dependencies
+b) It is in 3NF and every determinant is a candidate key
+b) Removes transitive dependencies
+c) Remove anomalies
+Section 11: Anomalies
+d) All of the above
+a) You cannot insert data due to lack of related data
+b) Inconsistent data appears after updates
+Section 12: Decomposition
+b) A decomposition that preserves all data
+a) Loss of some data during retrieval
+Section 13: Fourth and Fifth Normal Forms
+b) It is in BCNF and has no multi-valued dependencies
+b) It cannot be decomposed into smaller relations
+Section 14: Miscellaneous
+b) Normalization
+d) All of the above
+b) Weak entity
+a) Unique identifier for an entity
+c) Simple attribute
+d) 6NF
+b) Lossless decomposition
+c) 3NF
+b) Functional dependency
+a) Double rectangle
+c) Many-to-many relationship
+a) Ternary relationship
+a) X →→ Y
+a) Partial dependencies
