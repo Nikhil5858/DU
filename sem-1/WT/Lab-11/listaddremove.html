@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Add</title>
+</head>
+<body>
+
+    <label for="text">Enter Name : </label>
+    <input type="text" name="name" id="inputtext" placeholder="Enter Name : ">
+    <button type="submit" onclick="myShoppingList()" id="btnsubmit">Submit</button>
+    <ol id="list"></ol>
+
+    <script>
+
+        function myShoppingList() {            
+            const input = document.getElementById('inputtext')
+            const itemele = input.value.trim()
+
+            if (itemele === '') {
+                alert("Fill all Field!")
+                return
+            }
+
+            const listele = document.createElement('li')
+            listele.textContent = itemele
+
+            const removebutton = document.createElement('button')
+            removebutton.textContent = 'Remove'
+
+            const mylist = document.getElementById('list')
+            mylist.appendChild(listele)
+            listele.appendChild(removebutton)
+            
+            removebutton.addEventListener('click',function(){
+                listele.remove()
+            })
+            itemele.value=''
+        }
+
+    </script>
+</body>
+</html>

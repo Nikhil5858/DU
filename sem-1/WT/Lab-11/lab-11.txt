@@ -1,0 +1,200 @@
+(A) Static Login Page using HTML and JavaScript
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Login Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f2f2f2; padding: 50px; }
+        .login-container { max-width: 300px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px 0px #000; }
+        input[type="text"], input[type="password"] { width: 100%; padding: 10px; margin: 10px 0; }
+        input[type="submit"] { width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login Page</h2>
+        <form id="loginForm" onsubmit="return validateLogin()">
+            <input type="text" id="username" placeholder="Username" required><br>
+            <input type="password" id="password" placeholder="Password" required><br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <script>
+        function validateLogin() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            
+            if (username == "user" && password == "pass") {
+                alert("Login successful!");
+                return true;
+            } else {
+                alert("Invalid username or password!");
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+(B) Scientific Graphical Calculator using HTML and JavaScript
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; text-align: center; }
+        #calculator { width: 250px; margin: auto; padding: 20px; background-color: #f2f2f2; border-radius: 10px; }
+        button { width: 50px; height: 50px; margin: 5px; font-size: 18px; }
+        #display { width: 220px; height: 40px; margin-bottom: 10px; font-size: 24px; text-align: right; padding: 10px; }
+    </style>
+</head>
+<body>
+
+<div id="calculator">
+    <input type="text" id="display" disabled><br>
+    <button onclick="clearDisplay()">C</button>
+    <button onclick="appendToDisplay('(')">(</button>
+    <button onclick="appendToDisplay(')')">)</button>
+    <button onclick="calculate()">=</button><br>
+    <button onclick="appendToDisplay('7')">7</button>
+    <button onclick="appendToDisplay('8')">8</button>
+    <button onclick="appendToDisplay('9')">9</button>
+    <button onclick="appendToDisplay('/')">/</button><br>
+    <button onclick="appendToDisplay('4')">4</button>
+    <button onclick="appendToDisplay('5')">5</button>
+    <button onclick="appendToDisplay('6')">6</button>
+    <button onclick="appendToDisplay('*')">*</button><br>
+    <button onclick="appendToDisplay('1')">1</button>
+    <button onclick="appendToDisplay('2')">2</button>
+    <button onclick="appendToDisplay('3')">3</button>
+    <button onclick="appendToDisplay('-')">-</button><br>
+    <button onclick="appendToDisplay('0')">0</button>
+    <button onclick="appendToDisplay('.')">.</button>
+    <button onclick="appendToDisplay('+')">+</button>
+    <button onclick="calculateSquareRoot()">√</button><br>
+</div>
+
+<script>
+    function appendToDisplay(value) {
+        document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+        try {
+            var result = eval(document.getElementById('display').value);
+            document.getElementById('display').value = result;
+        } catch (error) {
+            alert("Invalid Calculation");
+        }
+    }
+
+    function calculateSquareRoot() {
+        var value = document.getElementById('display').value;
+        document.getElementById('display').value = Math.sqrt(value);
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+(C) JavaScript Form Validation
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+<body>
+    <form id="validationForm" onsubmit="return validateForm()">
+        Username: <input type="text" id="username" required><br><br>
+        Password: <input type="password" id="password" required><br><br>
+        Repeat Password: <input type="password" id="repeatPassword" required><br><br>
+        Date of Birth: <input type="date" id="dob" required><br><br>
+        Enrollment: <input type="text" id="enrollment" required><br><br>
+        Email: <input type="email" id="email" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateForm() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var repeatPassword = document.getElementById('repeatPassword').value;
+            var dob = new Date(document.getElementById('dob').value);
+            var enrollment = document.getElementById('enrollment').value;
+            var email = document.getElementById('email').value;
+
+            // Username validation
+            if (username.length < 8) {
+                alert("Username must be at least 8 characters long");
+                return false;
+            }
+
+            // Password validation
+            var passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*]).{8,12}$/;
+            if (!passwordPattern.test(password)) {
+                alert("Password must be 8-12 characters long, include at least 1 digit and 1 special character.");
+                return false;
+            }
+
+            // Repeat password validation
+            if (password !== repeatPassword) {
+                alert("Password and repeat password do not match");
+                return false;
+            }
+
+            // Age validation
+            var today = new Date();
+            var age = today.getFullYear() - dob.getFullYear();
+            var monthDiff = today.getMonth() - dob.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                age--;
+            }
+            if (age < 18) {
+                alert("Age must be greater than 18");
+                return false;
+            }
+
+            // Enrollment validation
+            if (!/^\d{11}$/.test(enrollment)) {
+                alert("Enrollment number must be 11 digits");
+                return false;
+            }
+
+            // Email validation
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email)) {
+                alert("Invalid email format");
+                return false;
+            }
+
+            alert("Form submitted successfully!");
+            return true;
+        }
+    </script>
+</body>
+</html>
