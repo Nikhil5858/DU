@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Event Fired</title>
+</head>
+<body>
+    <div id="textbox">Hello how are you!</div><br>
+    <div>Mouse Event Fired : <span id="mevent"></span></div>
+
+    <script>
+        let textbox = document.getElementById('textbox')
+        let mevent = document.getElementById('mevent')
+
+        function chnageevent(event){
+            mevent.textContent = event.type
+        }
+        textbox.addEventListener('click',chnageevent)
+        textbox.addEventListener('dblclick',chnageevent)
+        textbox.addEventListener('mouseout',chnageevent)
+        textbox.addEventListener('mousemove',chnageevent)
+        textbox.addEventListener('mouseover',chnageevent)
+        textbox.addEventListener('mouseleave',chnageevent)
+        textbox.addEventListener('mouseup',chnageevent)
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Event Fired</title>
+</head>
+<body>
+    <input type="text" id="textbox" placeholder="Enter Text"><br><br>
+    <div>Key Event Fired : <span id="kevent"></span></div>
+
+    <script>
+        let textbox = document.getElementById('textbox')
+        let kevent = document.getElementById('kevent')
+
+        function chnageevent(event){
+            kevent.textContent = event.type
+        }
+        textbox.addEventListener('keydown',chnageevent)
+        textbox.addEventListener('keypress',chnageevent)
+        textbox.addEventListener('keyup',chnageevent)
+    </script>
+</body>
+</html>
