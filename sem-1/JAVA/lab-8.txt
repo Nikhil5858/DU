@@ -1,0 +1,268 @@
+Program 1: Abstract Class and Subclasses (Vegetable Class Hierarchy)
+
+
+abstract class Vegetable {
+    String color;
+
+    public Vegetable(String color) {
+        this.color = color;
+    }
+
+    @Override
+    public abstract String toString();  // Abstract method to be overridden
+}
+
+class Potato extends Vegetable {
+    public Potato(String color) {
+        super(color);
+    }
+
+    @Override
+    public String toString() {
+        return "Potato, Color: " + color;
+    }
+}
+
+class Brinjal extends Vegetable {
+    public Brinjal(String color) {
+        super(color);
+    }
+
+    @Override
+    public String toString() {
+        return "Brinjal, Color: " + color;
+    }
+}
+
+class Tomato extends Vegetable {
+    public Tomato(String color) {
+        super(color);
+    }
+
+    @Override
+    public String toString() {
+        return "Tomato, Color: " + color;
+    }
+}
+
+public class VegetableTest {
+    public static void main(String[] args) {
+        Vegetable potato = new Potato("Brown");
+        Vegetable brinjal = new Brinjal("Purple");
+        Vegetable tomato = new Tomato("Red");
+
+        System.out.println(potato);
+        System.out.println(brinjal);
+        System.out.println(tomato);
+    }
+}
+
+
+
+Program 2: Interface Inheritance (A, A1, A2, and A12)
+
+
+
+interface A {
+    int CONST_A = 10;
+    void methodA();
+}
+
+interface A1 extends A {
+    int CONST_A1 = 20;
+    void methodA1();
+}
+
+interface A2 extends A {
+    int CONST_A2 = 30;
+    void methodA2();
+}
+
+interface A12 extends A1, A2 {
+    int CONST_A12 = 40;
+    void methodA12();
+}
+
+class B implements A12 {
+    @Override
+    public void methodA() {
+        System.out.println("Constant from A: " + CONST_A);
+    }
+
+    @Override
+    public void methodA1() {
+        System.out.println("Constant from A1: " + CONST_A1);
+    }
+
+    @Override
+    public void methodA2() {
+        System.out.println("Constant from A2: " + CONST_A2);
+    }
+
+    @Override
+    public void methodA12() {
+        System.out.println("Constant from A12: " + CONST_A12);
+    }
+}
+
+public class InterfaceInheritanceTest {
+    public static void main(String[] args) {
+        B obj = new B();
+        obj.methodA();
+        obj.methodA1();
+        obj.methodA2();
+        obj.methodA12();
+    }
+}
+
+
+Program 3: Transport Interface and Animal Class Hierarchy
+
+
+interface Transport {
+    void deliver();
+}
+
+abstract class Animal {
+    public abstract void sound();
+}
+
+class Tiger extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Tiger roars");
+    }
+}
+
+class Camel extends Animal implements Transport {
+    @Override
+    public void sound() {
+        System.out.println("Camel grunts");
+    }
+
+    @Override
+    public void deliver() {
+        System.out.println("Camel delivers goods");
+    }
+}
+
+class Deer extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Deer bleats");
+    }
+}
+
+class Donkey extends Animal implements Transport {
+    @Override
+    public void sound() {
+        System.out.println("Donkey brays");
+    }
+
+    @Override
+    public void deliver() {
+        System.out.println("Donkey delivers goods");
+    }
+}
+
+public class AnimalTest {
+    public static void main(String[] args) {
+        Animal[] animals = {new Tiger(), new Camel(), new Deer(), new Donkey()};
+
+        for (Animal animal : animals) {
+            animal.sound();
+            if (animal instanceof Transport) {
+                ((Transport) animal).deliver();
+            }
+        }
+    }
+}
+
+
+program -4
+
+// EventListener Interface
+interface EventListener {
+    void performEvent();
+}
+
+// MouseListener Interface, inheriting from EventListener
+interface MouseListener extends EventListener {
+    void mouseClicked();
+    void mousePressed();
+    void mouseReleased();
+    void mouseMoved();
+    void mouseDragged();
+}
+
+// KeyListener Interface, inheriting from EventListener
+interface KeyListener extends EventListener {
+    void keyPressed();
+    void keyReleased();
+}
+
+// EventDemo Class implementing both MouseListener and KeyListener
+class EventDemo implements MouseListener, KeyListener {
+
+    // Overriding methods from MouseListener
+    @Override
+    public void mouseClicked() {
+        System.out.println("Mouse clicked");
+    }
+
+    @Override
+    public void mousePressed() {
+        System.out.println("Mouse pressed");
+    }
+
+    @Override
+    public void mouseReleased() {
+        System.out.println("Mouse released");
+    }
+
+    @Override
+    public void mouseMoved() {
+        System.out.println("Mouse moved");
+    }
+
+    @Override
+    public void mouseDragged() {
+        System.out.println("Mouse dragged");
+    }
+
+    // Overriding methods from KeyListener
+    @Override
+    public void keyPressed() {
+        System.out.println("Key pressed");
+    }
+
+    @Override
+    public void keyReleased() {
+        System.out.println("Key released");
+    }
+
+    // Implementing performEvent() method from EventListener
+    @Override
+    public void performEvent() {
+        System.out.println("Event performed");
+    }
+
+    // Main method to demonstrate all methods
+    public static void main(String[] args) {
+        EventDemo demo = new EventDemo();
+
+        // Mouse events
+        demo.mouseClicked();
+        demo.mousePressed();
+        demo.mouseReleased();
+        demo.mouseMoved();
+        demo.mouseDragged();
+
+        // Key events
+        demo.keyPressed();
+        demo.keyReleased();
+
+        // General event
+        demo.performEvent();
+    }
+}
