@@ -1,0 +1,169 @@
+1. jQuery Script to Animate Button Moving 200px to the Right
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Button</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="moveButton">Click to Move</button>
+
+    <script>
+        $(document).ready(function() {
+            $("#moveButton").click(function() {
+                $(this).animate({left: '+=200px'}, 500); // Move 200px right
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+2. HTML with a Button and Empty Paragraph, Listening for Click Event
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Event</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="showText">Click Me</button>
+    <p id="textParagraph"></p>
+
+    <script>
+        $(document).ready(function() {
+            $("#showText").click(function() {
+                $("#textParagraph").text("Button was clicked!");
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+3. jQuery Code for Accordion Effect
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Effect</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .content { display: none; }
+    </style>
+</head>
+<body>
+    <h3 class="accordion">Item 1</h3>
+    <div class="content">
+        <p>Content for item 1.</p>
+    </div>
+    <h3 class="accordion">Item 2</h3>
+    <div class="content">
+        <p>Content for item 2.</p>
+    </div>
+    <h3 class="accordion">Item 3</h3>
+    <div class="content">
+        <p>Content for item 3.</p>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".accordion").click(function() {
+                $(this).next(".content").slideToggle();
+                $(".content").not($(this).next()).slideUp(); // Close other content
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+4. jQuery Code for Image Navigation and Auto Scroll
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .slider {
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        .images {
+            display: flex;
+            transition: all 0.5s ease-in-out;
+        }
+        .images img {
+            width: 300px;
+            height: 200px;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="images" id="imageSlider">
+            <img src="image1.jpg" alt="Image 1">
+            <img src="image2.jpg" alt="Image 2">
+            <img src="image3.jpg" alt="Image 3">
+        </div>
+    </div>
+    <div class="nav">
+        <button id="prev">Previous</button>
+        <button id="next">Next</button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            let currentImage = 0;
+            const images = $("#imageSlider img").length;
+
+            $("#next").click(function() {
+                if (currentImage < images - 1) {
+                    currentImage++;
+                } else {
+                    currentImage = 0;
+                }
+                $("#imageSlider").css("transform", `translateX(-${currentImage * 300}px)`);
+            });
+
+            $("#prev").click(function() {
+                if (currentImage > 0) {
+                    currentImage--;
+                } else {
+                    currentImage = images - 1;
+                }
+                $("#imageSlider").css("transform", `translateX(-${currentImage * 300}px)`);
+            });
+
+            setInterval(function() {
+                $("#next").click();
+            }, 3000); // Auto scroll every 3 seconds
+        });
+    </script>
+</body>
+</html>
