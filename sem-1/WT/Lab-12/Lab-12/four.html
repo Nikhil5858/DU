@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form>
+        <input type="text" placeholder="Enter name : " id="input"><br><br>
+        <select id="country">
+            <option value="usa">USA</option>
+            <option value="canada">Canada</option>
+            <option value="india">INDIA</option>
+        </select><br><br>
+        <button type="submit" onclick="btnsubmit()">Submit</button><br><br>
+
+        <div>Form event Fired : <span id="fevent"></span></div>
+    </form>
+    <script>
+        let input = document.getElementById('input')
+        let fevent = document.getElementById('fevent')
+        let form = document.querySelector('form')
+
+        function btnsubmit(event) {
+            fevent.textContent = event.type
+            event.preventDefault()
+        }
+
+        form.addEventListener('submit', btnsubmit)
+        form.addEventListener('input', btnsubmit)
+        
+    </script>
+</body>
+</html>
