@@ -1,0 +1,76 @@
+db.EMPLOYEE.insertMany([
+    { EID: 1, ENAME: "Nick", GENDER: "Male", JoiningDate: new Date("2013-01-01"), Salary: 4000, City: "London" },
+    { EID: 2, ENAME: "Julian", GENDER: "Female", JoiningDate: new Date("2014-10-01"), Salary: 3000, City: "New York" },
+    { EID: 3, ENAME: "Roy", GENDER: "Male", JoiningDate: new Date("2016-06-01"), Salary: 3500, City: "London" },
+    { EID: 4, ENAME: "Tom", GENDER: "Male", JoiningDate: null, Salary: 4500, City: "London" },
+    { EID: 5, ENAME: "Jerry", GENDER: "Male", JoiningDate: new Date("2013-02-01"), Salary: 2800, City: "Sydney" },
+    { EID: 6, ENAME: "Philip", GENDER: "Male", JoiningDate: new Date("2015-01-01"), Salary: 7000, City: "New York" },
+    { EID: 7, ENAME: "Sara", GENDER: "Female", JoiningDate: new Date("2017-08-01"), Salary: 4800, City: "Sydney" },
+    { EID: 8, ENAME: "Emily", GENDER: "Female", JoiningDate: new Date("2015-01-01"), Salary: 5500, City: "New York" },
+    { EID: 9, ENAME: "Michael", GENDER: "Male", JoiningDate: null, Salary: 6500, City: "London" },
+    { EID: 10, ENAME: "John", GENDER: "Male", JoiningDate: new Date("2015-01-01"), Salary: 8800, City: "London" }
+]);
+
+
+use mca
+db.createCollection('employee')
+
+=========================== A ===========================
+
+1
+db.EMPLOYEE.find({GENDER:'Male'})
+2
+db.EMPLOYEE.find({City:'London'})
+3
+db.EMPLOYEE.find({Salary : {$gt :3500}})
+4
+db.EMPLOYEE.find({JoiningDate:{$lt: new Date('2015-01-01')}})
+5
+db.EMPLOYEE.find({$or : [{EID : {$gte : 7}}]})
+6
+db.employees.find({ city: { $in: ["London", "New York"] } })
+7
+db.EMPLOYEE.find({city :{$nin : ['London','New York']}})
+8
+db.EMPLOYEE.find({City:'London'},{EID:1})
+9
+db.EMPLOYEE.find({City:'New York'}).limit(2)
+10
+db.EMPLOYEE.find({City:'London'}).limit(2).skip(2)
+11
+db.EMPLOYEE.find({GENDER: "Male",City : "Sydney"})
+12
+db.EMPLOYEE.find({City : {$in : ['London','Sydney']}},{EID:1,ENAME:1,Salary:1})
+13
+db.EMPLOYEE.find({Salary : {$gt : 7000}},{ENAME:1,City:1,Salary:1})
+14
+db.EMPLOYEE.find({ENAME:/^e/i})
+15
+db.EMPLOYEE.find({ENAME:/^[sm]/i})
+16
+db.EMPLOYEE.find({City:/^[am]/i})
+17
+db.EMPLOYEE.find({City:/ney$/i})
+18
+db.EMPLOYEE.find({ENAME:/n/i})
+19
+db.EMPLOYEE.find({ENAME:/^e..../i})
+20
+db.EMPLOYEE.find({ENAME:/^s.*a$/i})
+21
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
