@@ -112,6 +112,8 @@ a) Information Schema Attribute
 b) Is-A relationship
 c) Inherited Structure Attribute
 d) Internal Schema Alignment
+
+============================
 Section 7: Participation Constraints
 What does total participation mean?
 
