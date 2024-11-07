@@ -4,13 +4,31 @@ class Team {
     private String name;
     private int totalRuns;
     private int lostWickets;
+    private int totalsix;
+    private int totalnoball;
+    private int totalwide;
 
     public Team(String name) {
         this.name = name;
         this.totalRuns = 0;
         this.lostWickets = 0;
+        this.totalsix = 0;
+        this.totalnoball = 0;
+        this.totalwide = 0;
     }
 
+    public int getTotalSixes(){
+        return totalsix;
+    }
+
+    public int getTotalNoball(){
+        return totalnoball;
+    }
+
+    public int getTotalWide(){
+        return totalwide;
+    }
+    
     public String getName() {
         return name;
     }
@@ -21,6 +39,12 @@ class Team {
 
     public int getLostWickets() {
         return lostWickets;
+    }
+
+    public double getAverage(int overs) {
+        if (overs == 0) return 0;
+        return totalRuns / overs;
+
     }
 
     public boolean addRuns(int runs) {
@@ -40,6 +64,17 @@ class Team {
     public boolean isAllOut() {
         return lostWickets == 10;
     }
+
+    public void addNoball(){
+        this.totalnoball++;
+    }
+    public void addWide(){
+        this.totalwide++;
+    }
+    public void addSix(){
+        this.totalsix++;
+    }
+
 }
 
 class Cricket {
@@ -65,23 +100,23 @@ class Cricket {
         System.out.println("2. T20");
         System.out.println("3. Test");
         System.out.println("4. IPL");
-        
+
         int choice = sc.nextInt();
         String format;
         switch (choice) {
-            case 1: 
-                format = "ODI"; 
+            case 1:
+                format = "ODI";
                 break;
-            case 2: 
-                format = "T20"; 
+            case 2:
+                format = "T20";
                 break;
-            case 3: 
-                format = "Test"; 
+            case 3:
+                format = "Test";
                 break;
-            case 4: 
-                format = "IPL"; 
+            case 4:
+                format = "IPL";
                 break;
-            default: 
+            default:
                 System.out.println("Invalid choice, defaulting to T20 format.");
                 format = "T20";
         }
@@ -100,28 +135,37 @@ class Cricket {
 
             switch (input.toUpperCase()) {
                 case "W":
-                    team.addWicket();
-                    System.out.println("Wicket Down!!");
-                    break;
-                case "WD":
-                case "N":
-                    team.addRuns(1);
-                    System.out.println(input.equals("WD") ? "Wide ball! 1 Run & Ball added." : "No ball! 1 Run & Ball added.");
+                team.addWicket();
+                System.out.println("Wicket Down!!");
+                break;
+            case "WD":
+                team.addWide(); 
+                team.addRuns(1);
+                System.out.println("Wide ball! 1 Run & Ball added.");
+                i--;
+                break;
+            case "N":
+                team.addNoball(); 
+                team.addRuns(1);
+                System.out.println("No ball! 1 Run & Ball added.");
+                i--;
+                break;
+            default:
+                int runs;
+                try {
+                    runs = Integer.parseInt(input);
+                    if (runs == 6) {
+                        team.addSix(); 
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid Input");
                     i--;
-                    break;
-                default:
-                    int runs;
-                    try {
-                        runs = Integer.parseInt(input);
-                    } catch (NumberFormatException e) {
-                        System.out.println("Invalid Input");
-                        i--; 
-                        continue;
-                    }
-                    if (!team.addRuns(runs)) {
-                        i--; 
-                    }
-                    break;
+                    continue;
+                }
+                if (!team.addRuns(runs)) {
+                    i--;
+                }
+                break;
             }
 
             if (team.isAllOut()) {
@@ -136,14 +180,25 @@ class Cricket {
         return sc.next();
     }
 
-    public void displayResults() {
+    public void displayResults(int overs) {
         System.out.println("-----------------Match Results-----------------\n");
         System.out.println(team1.getName() + ": " + team1.getTotalRuns() + "/" + team1.getLostWickets());
+        System.out.println("Average Runs per Over for" + team1.getName() + ": " + team1.getAverage(overs));
+        System.out.println("Total Sixes : "+team1.getTotalSixes());
+        System.out.println("Total Noball : "+team1.getTotalNoball());
+        System.out.println("Total Wide : "+team1.getTotalWide());
+
+        System.out.println();
         System.out.println(team2.getName() + ": " + team2.getTotalRuns() + "/" + team2.getLostWickets());
+        System.out.println("Average Runs per Over for" + team2.getName() + ": " + team2.getAverage(overs));
+        System.out.println("Total Sixes : "+team2.getTotalSixes());
+        System.out.println("Total Noball : "+team2.getTotalNoball());
+        System.out.println("Total Wide : "+team2.getTotalWide());
+
         if (team1.getTotalRuns() > team2.getTotalRuns()) {
-            System.out.println("\n"+team1.getName() + " wins!");
+            System.out.println("\n" + team1.getName() + " wins!");
         } else if (team2.getTotalRuns() > team1.getTotalRuns()) {
-            System.out.println("\n"+team2.getName() + " wins!");
+            System.out.println("\n" + team2.getName() + " wins!");
         } else {
             System.out.println("It's a tie!");
         }
@@ -151,19 +206,24 @@ class Cricket {
 
     public static void main(String[] args) {
         Cricket c = new Cricket();
+
         c.welcomeMessage();
-        c.selectGameFormat(); 
-        int overs = c.getNumberOfOvers(); 
+
+        c.selectGameFormat();
+
+        int overs = c.getNumberOfOvers();
         c.playInnings(c.team1, overs);
         System.out.println();
         System.out.println("========== First Inning is Over Score is ==========");
         System.out.println(c.team1.getTotalRuns() + " / " + c.team1.getLostWickets());
         System.out.println();
+
         System.out.println("Second Inning Start\n");
         c.playInnings(c.team2, overs);
         System.out.println("========== Second Inning is Over Score is ==========");
         System.out.println(c.team2.getTotalRuns() + " / " + c.team2.getLostWickets());
         System.out.println();
-        c.displayResults();
+
+        c.displayResults(overs);
     }
 }
