@@ -1,0 +1,40 @@
+db.STUDENT.insertMany([
+    { RollNo: 101, Name: "Keyur", Birthdate: new Date("1992-01-05"), SPI: 8.5, City: "Rajkot", Backlog: 2, Branch: "CE" },
+    { RollNo: 102, Name: "Hardik", Birthdate: new Date("1994-02-15"), SPI: 9.0, City: "Ahmedabad", Backlog: 0, Branch: "CE" },
+    { RollNo: 103, Name: "Kajal", Birthdate: new Date("1996-03-14"), SPI: 10.00, City: "Baroda", Backlog: 0, Branch: "IT" },
+    { RollNo: 104, Name: "Bhoomi", Birthdate: new Date("1995-06-23"), SPI: 8.90, City: "Ahmedabad", Backlog: 1, Branch: "ICT" },
+    { RollNo: 105, Name: "Harmit", Birthdate: new Date("1994-02-15"), SPI: 9.80, City: "Rajkot", Backlog: 1, Branch: "IT" },
+    { RollNo: 106, Name: "Jay", Birthdate: new Date("1994-02-15"), SPI: 7.9, City: "Rajkot", Backlog: 2, Branch: "CE" }
+]);
+
+db.STUDENT.find()
+
+1
+db.STUDENT.find({$and : [{RollNo:{$gt:103}} ,{Backlog : {$gt:0}}, {Branch : {$in : ['CE','IT']}} ] },{RollNo:1,Name:1})
+2
+db.STUDENT.find({
+    SPI: { $gte: 8, $lt: 9 },
+    branch: { $in: ["CE", "IT"] }
+}, { name: 1 });
+
+3
+db.STUDENT.find({Branch : {$not : /CE/}})
+
+4
+db.STUDENT.find({},{RollNo:1,Name:1}).limit(3)
+
+5
+db.STUDENT.find({SPI : {$gt:8.5}}).limit(3)
+6
+db.STUDENT.distinct('City')
+7
+db.STUDENT.distinct('Branch')
+8
+db.STUDENT.find().sort({Backlog:-1,SPI:1})
+9
+db.STUDENT.updateMany({Name: "Jay"},{$set : {City:'Jamnagar',Branch:'MCA'}})
+10
+db.collectionName.updateMany(
+  { name: { $in: ["Keyur", "Bhoomi"] } },
+  { $set: { backlog: null } }
+)

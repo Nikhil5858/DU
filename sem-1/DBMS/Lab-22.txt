@@ -1,0 +1,82 @@
+db.STUDENT.insertMany([{
+        "StuID": 1011,
+        "FirstName": "Keyur",
+        "LastName": "Patel",
+        "Website": "techonthenet.com",
+        "City": "Rajkot",
+        "Division": "II-BCX"
+    },
+    {
+        "StuID": 1022,
+        "FirstName": "Hardik",
+        "LastName": "Shah",
+        "Website": "digminecraft.com",
+        "City": "Ahmedabad",
+        "Division": "I-BCY"
+    },
+    {
+        "StuID": 1033,
+        "FirstName": "Kajal",
+        "LastName": "Trivedi",
+        "Website": "bigactivities.com",
+        "City": "Baroda",
+        "Division": "IV-DCX"
+    },
+    {
+        "StuID": 1044,
+        "FirstName": "Bhoomi",
+        "LastName": "Gajera",
+        "Website": "checkyourmath.com",
+        "City": "Ahmedabad",
+        "Division": "III-DCW"
+    },
+    {
+        "StuID": 1055,
+        "FirstName": "Harmit",
+        "LastName": "Mitel",
+        "Website": null,
+        "City": "Rajkot",
+        "Division": "II-BCY"
+    },
+    {
+        "StuID": 1066,
+        "FirstName": "Ashok",
+        "LastName": "Jani",
+        "Website": null,
+        "City": "Baroda",
+        "Division": "II-BCZ"
+    }
+])
+
+
+
+
+1
+db.STUDENT.find({FirstName: /^k/i})
+2
+db.STUDENT.find({FirstName:/...../})
+3
+db.STUDENT.find({$and : [{City: /......*a$/i}]},{FirstName:1,LastName:1})
+4
+db.STUDENT.find({LastName : /tel$/i})
+5
+db.STUDENT.find({FirstName : /^ha.*t$/i})
+6
+db.STUDENT.find({FirstName : /^k.y/i})
+7
+db.STUDENT.find({FirstName : /...../i,Website : null})
+8
+db.STUDENT.find({LastName : /jer$/i})
+9
+db.STUDENT.find({City : /^[rb]/i})
+10
+db.students.find({ website: { $not: { $exists: true } } },{ name: 1, _id: 0 })
+
+
+
+
+
+
+
+
+

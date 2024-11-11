@@ -1,0 +1,42 @@
+db.EMPLOYEE.insertMany([
+    { EmpNo: 101, EmpName: "Keyur", JoiningDate: new Date("2002-01-05"), Salary: 12000.00, City: "Rajkot" },
+    { EmpNo: 102, EmpName: "Hardik", JoiningDate: new Date("2004-02-15"), Salary: 14000.00, City: "Ahmedabad" },
+    { EmpNo: 103, EmpName: "Kajal", JoiningDate: new Date("2006-03-14"), Salary: 15000.00, City: "Baroda" },
+    { EmpNo: 104, EmpName: "Bhoomi", JoiningDate: new Date("2005-06-23"), Salary: 12500.00, City: "Ahmedabad" },
+    { EmpNo: 102, EmpName: "Harmit", JoiningDate: new Date("2004-02-15"), Salary: 14000.00, City: "Rajkot" }
+]);
+
+
+
+1
+db.EMPLOYEE.find({Salary: { $gt: 13000 },City: { $in: ["Rajkot", "Baroda"] }},{ EmpName: 1, _id: 0 })
+2
+db.EMPLOYEE.find({},{EmpName:1}).sort({EmpName:1})
+3
+db.EMPLOYEE.distinct('City')
+4
+db.EMPLOYEE.updateMany({EmpName : { $in : ['Keyur','Bhoomi']}},{$set : {City : null}})
+5
+db.EMPLOYEE.find({City : null},{EmpName:1})
+6
+db.EMPLOYEE.deleteMany({Salary : {$gte : 14000}})
+7
+db.EMPLOYEE.deleteMany({City : 'Rajkot'})
+8
+db.EMPLOYEE.deleteMany({JoiningDate : {$gt : new Date('2007-1-1')}})
+9
+db.EMPLOYEE.deleteMany({})
+10
+db.EMPLOYEE.drop()
+
+
+
+
+
+
+
+
+
+
+
+
