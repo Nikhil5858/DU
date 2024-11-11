@@ -7,6 +7,7 @@ class Team {
     private int totalsix;
     private int totalnoball;
     private int totalwide;
+    private int totalfour;
 
     public Team(String name) {
         this.name = name;
@@ -15,20 +16,25 @@ class Team {
         this.totalsix = 0;
         this.totalnoball = 0;
         this.totalwide = 0;
+        this.totalfour = 0;
     }
 
-    public int getTotalSixes(){
+    public int getTotalSixes() {
         return totalsix;
     }
 
-    public int getTotalNoball(){
+    public int getTotalFour() {
+        return totalfour;
+    }
+
+    public int getTotalNoball() {
         return totalnoball;
     }
 
-    public int getTotalWide(){
+    public int getTotalWide() {
         return totalwide;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -42,13 +48,14 @@ class Team {
     }
 
     public double getAverage(int overs) {
-        if (overs == 0) return 0;
+        if (overs == 0)
+            return 0;
         return totalRuns / overs;
 
     }
 
     public boolean addRuns(int runs) {
-        if (runs == 1 || runs == 2 || runs == 3 || runs == 4 || runs == 6) {
+        if (runs == 0 || runs == 1 || runs == 2 || runs == 3 || runs == 4 || runs == 6) {
             this.totalRuns += runs;
             return true;
         } else {
@@ -65,14 +72,20 @@ class Team {
         return lostWickets == 10;
     }
 
-    public void addNoball(){
+    public void addNoball() {
         this.totalnoball++;
     }
-    public void addWide(){
+
+    public void addWide() {
         this.totalwide++;
     }
-    public void addSix(){
+
+    public void addSix() {
         this.totalsix++;
+    }
+
+    public void addfour() {
+        this.totalfour++;
     }
 
 }
@@ -128,72 +141,82 @@ class Cricket {
         return sc.nextInt();
     }
 
+    public String getRunsForBall(int ballNumber, String teamName) {
+        System.out.print("Enter Runs for " + teamName + ", Ball " + (ballNumber + 1) + ": ");
+        return sc.next();
+    }
+
     public void playInnings(Team team, int overs) {
+
         int totalBalls = overs * 6;
+
         for (int i = 0; i < totalBalls; i++) {
+
             String input = getRunsForBall(i, team.getName());
 
             switch (input.toUpperCase()) {
                 case "W":
-                team.addWicket();
-                System.out.println("Wicket Down!!");
-                break;
-            case "WD":
-                team.addWide(); 
-                team.addRuns(1);
-                System.out.println("Wide ball! 1 Run & Ball added.");
-                i--;
-                break;
-            case "N":
-                team.addNoball(); 
-                team.addRuns(1);
-                System.out.println("No ball! 1 Run & Ball added.");
-                i--;
-                break;
-            default:
-                int runs;
-                try {
-                    runs = Integer.parseInt(input);
-                    if (runs == 6) {
-                        team.addSix(); 
+                    team.addWicket();
+                    System.out.println("Wicket Down!!");
+                    break;
+                case "WD":
+                    team.addWide();
+                    team.addRuns(1);
+                    System.out.println("Wide ball! 1 Run & Ball added.");
+                    i--;
+                    break;
+                case "N":
+                    team.addNoball();
+                    team.addRuns(1);
+                    System.out.println("No ball! 1 Run & Ball added.");
+                    i--;
+                    break;
+                default:
+                    int runs;
+                    try {
+                        runs = Integer.parseInt(input);
+                        if (runs == 6 || runs == 4) {
+                            team.addSix();
+                            team.addfour();
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid Input");
+                        i--;
+                        continue;
                     }
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid Input");
-                    i--;
-                    continue;
-                }
-                if (!team.addRuns(runs)) {
-                    i--;
-                }
-                break;
+                    if (!team.addRuns(runs)) {
+                        i--;
+                    }
+                    break;
             }
 
             if (team.isAllOut()) {
                 System.out.println("All wickets are fallen for " + team.getName() + "!");
                 break;
             }
-        }
-    }
 
-    public String getRunsForBall(int ballNumber, String teamName) {
-        System.out.print("Enter runs for " + teamName + ", Ball " + (ballNumber + 1) + ": ");
-        return sc.next();
+            if ((i + 1) % 6 == 0) {
+                System.out.println("Over " + ((i + 1) / 6) + " Is Complate!");
+            }
+        }
     }
 
     public void displayResults(int overs) {
         System.out.println("-----------------Match Results-----------------\n");
         System.out.println(team1.getName() + ": " + team1.getTotalRuns() + "/" + team1.getLostWickets());
         System.out.println("Average Runs per Over for" + team1.getName() + ": " + team1.getAverage(overs));
-        System.out.println("Total Sixes : "+team1.getTotalSixes());
-        System.out.println("Total Noball : "+team1.getTotalNoball());
-        System.out.println("Total Wide : "+team1.getTotalWide());
+        System.out.println("Total Four : " + team1.getTotalFour());
+        System.out.println("Total Sixes : " + team1.getTotalSixes());
+        System.out.println("Total Noball : " + team1.getTotalNoball());
+        System.out.println("Total Wide : " + team1.getTotalWide());
 
         System.out.println();
         System.out.println(team2.getName() + ": " + team2.getTotalRuns() + "/" + team2.getLostWickets());
         System.out.println("Average Runs per Over for" + team2.getName() + ": " + team2.getAverage(overs));
-        System.out.println("Total Sixes : "+team2.getTotalSixes());
-        System.out.println("Total Noball : "+team2.getTotalNoball());
-        System.out.println("Total Wide : "+team2.getTotalWide());
+        System.out.println("Total Four : " + team2.getTotalFour());
+        System.out.println("Total Sixes : " + team2.getTotalSixes());
+        System.out.println("Total Noball : " + team2.getTotalNoball());
+        System.out.println("Total Wide : " + team2.getTotalWide());
 
         if (team1.getTotalRuns() > team2.getTotalRuns()) {
             System.out.println("\n" + team1.getName() + " wins!");
