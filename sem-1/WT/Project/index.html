@@ -12,7 +12,8 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg mt-3">
         <div class="container-fluid">
-          <a class="navbar-brand text-light" href="index.html"><img src="./images/logo.png" alt=""></a>
+          <!-- <a class="navbar-brand text-light" href="index.html"><img src="./images/logo.png" alt=""></a> -->
+           <div class="logo">Cyborg</div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                   aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -168,22 +169,94 @@
         </div>
       </div>
 
-      <div class="page-content p-lg-5 mt-3">
-        <div class="main-banner position-relative">
-          <img src="./images/banner-bg.jpg" alt="" class="img-fluid banner-image" />
-          <div class="banner-text d-flex flex-column justify-content-center align-items-start position-absolute top-50 start-0 ms-lg-5 ps-3" style="transform: translateY(-50%);">
-            <h4>Welcome To Cyborg</h4>
-            <h1>
-              <span style="color: #e75e8d; font-weight: 500; font-size: larger;">Browse</span>
-              Our Popular <br />
-              Games Here
-            </h1>
-            <a href="browse.html" class="main-button mt-3">Browse Now</a>
+      <div class="most-popular mt-2">
+        <div class="heading-section ms-3">
+          <h4><em>Your Gaming</em> Library</h4>
+        </div>
+        <div class="page-content p-lg-5 mt-4">
+        <div class="page-black-content p-lg-5 mt-2">
+          <div class="game-list">
+            <!-- Game 1 -->
+            <div class="game-item d-flex align-items-center p-3 mb-3">
+              <img src="./images/game-01.jpg" class="game-img rounded me-3">
+              <div class="flex-grow-1">
+                <h5 class="mb-1">Dota 2</h5>
+                <p class="mb-1">Sandbox</p>
+              </div>
+              <div class="me-5">
+                <p class="mb-0"><strong class="game-header">Date Added</strong></p>
+                <p>24/08/2036</p>
+              </div>
+              <div class="me-5">
+                <p class="mb-0"><strong class="game-header">Hours Played</strong></p>
+                <p>634 H 22 Mins</p>
+              </div>
+              <div>
+                <p class="mb-0 me-5"><strong class="game-header">Currently</strong></p>
+                <p>Downloaded</p>
+              </div>
+              <button class="btn btn-downloaded ms-3">Downloaded</button>
+            </div>
+            
+            <!-- Game 2 -->
+            <div class="game-item d-flex align-items-center p-3 mb-3">
+                <img src="./images/game-01.jpg" class="game-img rounded me-3">
+                <div class="flex-grow-1">
+                    <h5 class="mb-1">Fortnite</h5>
+                    <p class="mb-1">Sandbox</p>
+                </div>
+                <div class="me-5">
+                    <p class="mb-0"><strong class="game-header">Date Added</strong></p>
+                    <p>22/06/2036</p>
+                </div>
+                <div class="me-5">
+                    <p class="mb-0"><strong class="game-header">Hours Played</strong></p>
+                    <p>740 H 52 Mins</p>
+                </div>
+                <div>
+                    <p class="me-5 mb-0"><strong class="game-header">Currently</strong></p>
+                    <p>Downloaded</p>
+                </div>
+                <button class="btn btn-download ms-4">Download</button>
+            </div>
+            
+            <!-- Game 3 -->
+            <div class="game-item d-flex align-items-center p-3 mb-3">
+                <img src="./images/game-01.jpg" class="game-img rounded me-3">
+                <div class="flex-grow-1">
+                    <h5 class="mb-1">CS-GO</h5>
+                    <p class="mb-1">Sandbox</p>
+                </div>
+                <div class="me-5">
+                    <p class="mb-0"><strong class="game-header">Date Added</strong></p>
+                    <p>21/04/2036</p>
+                </div>
+                <div class="me-5">
+                    <p class="mb-0"><strong class="game-header">Hours Played</strong></p>
+                    <p>892 H 14 Mins</p>
+                </div>
+                <div>
+                    <p class="me-5 mb-0"><strong class="game-header">Currently</strong></p>
+                    <p>Downloaded</p>
+                </div>
+                <button class="btn btn-downloaded ms-3">Downloaded</button>
+            </div>
+            
           </div>
+        </div>
         </div>
       </div>
 
-      
+      <footer>
+        <div class="container text-center mt-4 mb-3">
+          <div class="row">
+            <div class="col-lg-12 text-light">
+              <p>Copyright © 2025 Cyborg Gaming. All rights reserved. 
+            </div>
+          </div>
+        </div>
+      </footer>
+
     </div>
 
     <script src="./bootstrap/js/bootstrap.min.js"></script>
