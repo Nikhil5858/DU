@@ -4,31 +4,31 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-body .page-content {
+.page-content {
   background-color: #27292a;
   color: #666;
   border-radius: 25px;
 }
 
-.nav-link{
+.nav-link {
   font-weight: 500;
   font-size: 17px;
-  text-transform: capitalize;
   color: #666;
+  text-transform: capitalize;
 }
 
-.nav-link:hover{
+.nav-link:hover {
   color: #e75e8d;
 }
 
-.main-button{
+.main-button {
   font-size: 14px;
   color: #fff;
   background-color: #e75e8d;
   padding: 12px 30px;
-  display: inline-block;
   border-radius: 25px;
-  font-weight: 400;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .main-button:hover {
@@ -36,28 +36,55 @@ body .page-content {
   color: #e75e8d;
 }
 
-
-.main-banner {
-  position: relative;
-}
-
 .banner-image {
   width: 100%;
   height: auto;
-  display: block;
 }
 
 .banner-text {
-  color: white;
+  color: #fff;
 }
 
-.banner-text h6 {
-  font-size: 16px;
-  font-weight: 400;
+.most-popular {
+  background-color: #1f2122;
+  border-radius: 23px;
 }
 
-.banner-text h4 {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.2;
+.heading-section h4 {
+  color: #ec6090;
+  font-size: 34px;
 }
+
+.heading-section h4 em {
+  color: #fff;
+  font-style: normal;
+  text-decoration: underline;
+}
+
+
+.card {
+  background-color: #27292a;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.card-title {
+  font-size: 1.2rem;
+  color: #fff;
+}
+.card-subtitle {
+  color: #ec6090;
+  font-size: 1rem;
+}
+.card ul {
+  color: #666;
+}
+.card img{
+  border-radius: 25px;
+}
+.bi-star-fill {
+  color: yellow;
+}
+.bi-download {
+  color: #ec6090;
+}
+
