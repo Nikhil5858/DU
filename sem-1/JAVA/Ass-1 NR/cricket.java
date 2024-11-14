@@ -96,7 +96,11 @@ class InvalidInputException extends Exception{
     }
 }
 
-class Cricket {
+interface GameInfo{
+    public void selectGameFormat();
+}
+
+class Cricket implements GameInfo{
     private Team team1;
     private Team team2;
     public Scanner sc;
@@ -153,7 +157,7 @@ class Cricket {
     }
 
     public void playInnings(Team team, int overs) {
-        
+
         int totalBalls = overs * 6;
     
         for (int i = 0; i < totalBalls; i++) {
