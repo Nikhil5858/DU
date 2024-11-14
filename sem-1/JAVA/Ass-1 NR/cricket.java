@@ -90,6 +90,12 @@ class Team {
 
 }
 
+class InvalidInputException extends Exception{
+    public InvalidInputException(String message){
+        super(message);
+    }
+}
+
 class Cricket {
     private Team team1;
     private Team team2;
@@ -147,59 +153,64 @@ class Cricket {
     }
 
     public void playInnings(Team team, int overs) {
-
+        
         int totalBalls = overs * 6;
-
+    
         for (int i = 0; i < totalBalls; i++) {
-
             String input = getRunsForBall(i, team.getName());
-
-            switch (input.toUpperCase()) {
-                case "W":
-                    team.addWicket();
-                    System.out.println("Wicket Down!!");
-                    break;
-                case "WD":
-                    team.addWide();
-                    team.addRuns(1);
-                    System.out.println("Wide ball! 1 Run & Ball added.");
-                    i--;
-                    break;
-                case "N":
-                    team.addNoball();
-                    team.addRuns(1);
-                    System.out.println("No ball! 1 Run & Ball added.");
-                    i--;
-                    break;
-                default:
-                    int runs;
-                    try {
-                        runs = Integer.parseInt(input);
-                        if (runs == 6 || runs == 4) {
-                            team.addSix();
-                            team.addfour();
+    
+            try {
+                switch (input.toUpperCase()) {
+                    case "W":
+                        team.addWicket();
+                        System.out.println("Wicket Down!!");
+                        break;
+                    case "WD":
+                        team.addWide();
+                        team.addRuns(1);
+                        System.out.println("Wide ball! 1 Run & Ball added.");
+                        i--;
+                        break;
+                    case "N":
+                        team.addNoball();
+                        team.addRuns(1);
+                        System.out.println("No ball! 1 Run & Ball added.");
+                        i--;
+                        break;
+                    default:
+                        int runs;
+                        try {
+                            runs = Integer.parseInt(input);
+                            if (runs == 6) {
+                                team.addSix();
+                            } else if (runs == 4) {
+                                team.addfour();
+                            }
+                        } catch (NumberFormatException e) {
+                            throw new InvalidInputException("Invalid Input: Please enter a valid Run.");
                         }
-                    } catch (NumberFormatException e) {
-                        System.out.println("Invalid Input");
-                        i--;
-                        continue;
-                    }
-                    if (!team.addRuns(runs)) {
-                        i--;
-                    }
+                        if (!team.addRuns(runs)) {
+                            throw new InvalidInputException("Invalid run input. Only 0, 1, 2, 3, 4, or 6 allowed.");
+                        }
+                        break;
+                }
+    
+                if (team.isAllOut()) {
+                    System.out.println("All wickets are fallen for " + team.getName() + "!");
                     break;
-            }
-
-            if (team.isAllOut()) {
-                System.out.println("All wickets are fallen for " + team.getName() + "!");
-                break;
-            }
-
-            if ((i + 1) % 6 == 0) {
-                System.out.println("Over " + ((i + 1) / 6) + " Is Complate!");
+                }
+    
+                if ((i + 1) % 6 == 0) {
+                    System.out.println("Over " + ((i + 1) / 6) + " is Complete!");
+                }
+    
+            } catch (InvalidInputException e) {
+                System.out.println(e.getMessage());
+                i--;
             }
         }
     }
+    
 
     public void displayResults(int overs) {
         System.out.println("-----------------Match Results-----------------\n");
