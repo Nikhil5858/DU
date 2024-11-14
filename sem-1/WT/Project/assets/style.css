@@ -100,6 +100,12 @@ body {
 .bi-download{
   color: #e75e8d;
 }
+.bi-hdd-stack-fill{
+  color: #e75e8d;
+}
+.bi-controller{
+  color: #e75e8d;
+}
 
 .game-item {
   display: flex;
@@ -164,4 +170,15 @@ body {
   font-size: 45px;  
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+.gamedetails .detailbutton {
+  background-color: #ff6584;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  color: white;
+}
+.gamedetails .detailbutton a {
+  color: white;
+  text-decoration: none;
 }
