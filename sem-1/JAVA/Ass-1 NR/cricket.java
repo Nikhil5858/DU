@@ -117,6 +117,13 @@ class Cricket implements GameInfo{
         System.out.println("Welcome to Cricket Game!");
     }
 
+    public void rules(){
+        System.out.println();
+        System.out.println("Enter 'N' for No Ball.");
+        System.out.println("Enter 'W' for Wicket.");
+        System.out.println("Enter 'WD' for Wide Ball.\n");
+    }
+
     public void selectGameFormat() {
         System.out.println("Select Game Format!");
         System.out.println("1. ODI");
@@ -248,6 +255,8 @@ class Cricket implements GameInfo{
         c.welcomeMessage();
 
         c.selectGameFormat();
+
+        c.rules();
 
         int overs = c.getNumberOfOvers();
         c.playInnings(c.team1, overs);
