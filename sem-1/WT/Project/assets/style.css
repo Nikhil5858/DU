@@ -49,6 +49,10 @@ body {
   color: #e75e8d;
 }
 
+.textpinkcolor{
+  color: #e75e8d;
+}
+
 .banner-image {
   width: 100%;
   height: auto;
@@ -106,6 +110,9 @@ body {
 .bi-controller{
   color: #e75e8d;
 }
+.bi-check-circle-fill{
+  color: #e75e8d;
+}
 
 .game-item {
   display: flex;
@@ -149,6 +156,9 @@ body {
   color: #fff;
   background-color: #ff6584;
 }
+.btn-download {
+  background-color: #ff6584;
+}
 
 .btn-downloaded {
   color: #666;
@@ -182,3 +192,5 @@ body {
   color: white;
   text-decoration: none;
 }
+
+

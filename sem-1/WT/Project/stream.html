@@ -3,67 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybord-Stream</title>
-    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <title>Cyborg-Stream</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
 
     <div class="container">
 
-        <nav class="navbar navbar-expand-lg mt-3">
-          <div class="container-fluid">
-             <div class="logo">Cyborg</div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-centar ms-5">
-              <form class="d-flex" role="search">
-                <input class="form-control me-2 page-content" type="search" placeholder="Search" aria-label="Search">
-              </form>
+        <nav class="navbar navbar-expand-md mt-3">
+            <div class="container-fluid">
+                <div class="logo">Cyborg</div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center ms-5">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2 page-content" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
+                <div class="collapse navbar-collapse justify-content-end">
+                    <div class="navbar-nav">
+                        <a class="nav-link me-4" href="./index.html">Home</a>
+                        <a class="nav-link me-4" href="./browse.html">Browse</a>
+                        <a class="nav-link me-4" href="./detail.html">Details</a>
+                        <a class="nav-link me-4" href="./stream.html">Streams</a>
+                    </div>
+                </div>
             </div>
-            <div class="collapse navbar-collapse justify-content-end">
-              <div class="navbar-nav">
-                <a class="nav-link me-4" href="./index.html">Home</a>
-                <a class="nav-link me-4" href="./browse.html">Browse</a>
-                <a class="nav-link me-4" href="./detail.html">Details</a>
-                <a class="nav-link me-4" href="./stream.html">Streams</a>
-              </div>
-            </div>
-          </div>
         </nav>
 
-        <div class="page-content p-lg-5 mt-3">
+        <div class="page-content p-md-5 mt-3">
             <div class="main-banner position-relative">
-              <img src="./images/banner-bg.jpg" alt="" class="img-fluid banner-image" />
-              <div class="banner-text d-flex flex-column justify-content-center align-items-start position-absolute top-50 start-0 ms-lg-5 ps-3" style="transform: translateY(-50%);">
-                <h4>Welcome To Cyborg</h4>
-                <h1>
-                  <span style="color: #e75e8d; font-weight: 500; font-size: larger;">Browse</span>
-                  Our Popular <br />
-                  Games Here
-                </h1>
-                <a href="browse.html" class="main-button mt-3">Browse Now</a>
-              </div>
-            </div>
-          </div>
+                <div class="row">
+
+                    <div class="col-md-8">
+                        <div class="page-black-content p-md-5">
+
+                            <div class="heading-section">
+                                <h4><em>Live</em> Streams</h4>
+                            </div>
+
+                            <div class="container mt-5">
+                                <div class="owl-carousel owl-features">
+
+                                  <div class="item">
+                                        <div class="card bg-dark text-white">
+                                            <img src="./images/featured-01.jpg" class="card-img" alt="Island Rusty">
+                                        </div>
+                                        <h5 class="card-title mt-3 text-center mb-2">Island Rusty</h5>
+                                        <p><i class="bi bi-star-fill ms-4"></i> 4.8 <i class="bi bi-download ms-5"></i> 4.8</p>
+                                        <small>2.3M Views | 249K Downloads</small>
+                                    </div>
+
+                                    <div class="item">
+                                        <div class="card bg-dark text-white">
+                                            <img src="./images/featured-02.jpg" class="card-img" alt="CS-GO">
+                                        </div>
+                                        <h5 class="card-title mt-3 text-center mb-2">CS-GO</h5>
+                                        <p><i class="bi bi-star-fill ms-4"></i> 4.8 <i class="bi bi-download ms-5"></i> 4.8</p>
+                                        <small>249K Downloads | 2.3M Views</small>
+                                    </div>
+
+                                    <div class="item">
+                                        <div class="card bg-dark text-white">
+                                            <img src="./images/featured-03.jpg" class="card-img" alt="Gamezer">
+                                        </div>
+                                        <h5 class="card-title mt-3 text-center mb-2">Gamezer</h5>
+                                        <p><i class="bi bi-star-fill ms-4"></i> 4.8 <i class="bi bi-download ms-5"></i> 4.8</p>
+                                        <small>249K Downloads | 2.3M Views</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
+                    <div class="col-md-4">
+                      <div class="page-black-content p-md-5">
+                        <div class="col-md-12">
+    
+                            <div class="heading-section">
+                              <h4><em>Live</em> Streamers</h4>
+                            </div>
+    
+                            <ul class="list-unstyled">
+                              <li class="d-flex align-items-center py-4 border-bottom">
+                                  <span class="text-white fw-bold me-3">01</span>
+                                  <img src="./images/avatar-01.jpg" class="rounded-circle me-3" style="width: 46px; height: 46px;">
+                                  <h6 class="mb-0 textpinkcolor"><i class="bi bi-check-circle-fill me-1"></i> LahutaM</h6>
+                                  <a href="#" class="btn btn-download btn-sm ms-auto px-4"><span class="text-light">Follow</span></a>
+                              </li>
+                              <li class="d-flex align-items-center py-4 border-bottom">
+                                  <span class="text-white fw-bold me-3">02</span>
+                                  <img src="./images/avatar-02.jpg" class="rounded-circle me-3" style="width: 46px; height: 46px;">
+                                  <h6 class="mb-0 textpinkcolor"><i class="bi bi-check-circle-fill me-1"></i> Kengan</h6>
+                                  <a href="#" class="btn btn-download btn-sm ms-auto px-4"><span class="text-light">Follow</span></a>
+                              </li>
+                              <li class="d-flex align-items-center py-4 border-bottom">
+                                  <span class="text-white fw-bold me-3">03</span>
+                                  <img src="./images/avatar-03.jpg" class="rounded-circle me-3" style="width: 46px; height: 46px;">
+                                  <h6 class="mb-0 textpinkcolor"><i class="bi bi-check-circle-fill me-1"></i> Areluwa</h6>
+                                  <a href="#" class="btn btn-download btn-sm ms-auto px-4"><span class="text-light">Follow</span></a>
+                              </li>
+                              <li class="d-flex align-items-center py-4 border-bottom">
+                                  <span class="text-white fw-bold me-3">04</span>
+                                  <img src="./images/avatar-04.jpg" class="rounded-circle me-3" style="width: 46px; height: 46px;">
+                                  <h6 class="mb-0 textpinkcolor"><i class="bi bi-check-circle-fill me-1"></i> Omeg</h6>
+                                  <a href="#" class="btn btn-download btn-sm ms-auto px-4"><span class="text-light">Follow</span></a>
+                              </li>
+                              <li class="d-flex align-items-center py-2">
+                                  <span class="text-white fw-bold me-3">05</span>
+                                  <img src="./images/avatar-01.jpg" class="rounded-circle me-2" style="width: 46px; height: 46px;">
+                                  <h6 class="mb-0 textpinkcolor"><i class="bi bi-check-circle-fill me-1"></i>GangTeam</h6>
+                                  <a href="#" class="btn btn-download btn-sm ms-auto px-4"><span class="text-light">Follow</span></a>
+                              </li>
+                          </ul>
+                          <button class="btn btn-download text-light ms-4"><span class="ms-5 me-5">View All Games</span></button>
+    
+                        </div>
+                      </div>
+                    </div>
 
-        <!-- <footer>
-            <div class="container text-center mt-4 mb-3">
-              <div class="row">
-                <div class="col-lg-12 text-light">
-                  <p>Copyright © 2025 Cyborg Gaming. All rights reserved. 
                 </div>
-              </div>
             </div>
-        </footer> -->
+        </div>
 
     </div>
 
     <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="./assets/main.js"></script>
 </body>
 </html>
