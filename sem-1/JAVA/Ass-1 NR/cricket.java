@@ -90,19 +90,20 @@ class Team {
 
 }
 
-class InvalidInputException extends Exception{
-    public InvalidInputException(String message){
+class InvalidInputException extends Exception {
+    public InvalidInputException(String message) {
         super(message);
     }
 }
 
-interface GameInfo{
+interface GameInfo {
     public void selectGameFormat();
 }
 
-abstract class Game{
+abstract class Game {
 
     public abstract void playGame();
+
     public abstract void rules();
 
     public void selectGameFormat() {
@@ -129,15 +130,18 @@ abstract class Game{
                 format = "IPL";
                 break;
             default:
+                System.out.println();
                 System.out.println("Invalid choice, defaulting to T20 format.");
                 format = "T20";
+                break;
         }
         System.out.println("You selected " + format + " format.");
-        sc.close();
     }
 }
 
-class Cricket extends Game implements GameInfo{
+
+
+class Cricket extends Game implements GameInfo {
     private Team team1;
     private Team team2;
     public Scanner sc;
@@ -148,20 +152,16 @@ class Cricket extends Game implements GameInfo{
         team2 = new Team("Team 2");
     }
 
-    public void welcomeMessage() {
-        System.out.println();
-        System.out.println("===============================");
-        System.out.println("Welcome to Cricket Game!");
-    }
+    
 
-    public void rules(){
+    public void rules() {
         System.out.println();
         System.out.println("Enter 'N' for No Ball.");
         System.out.println("Enter 'W' for Wicket.");
         System.out.println("Enter 'WD' for Wide Ball.\n");
     }
 
-    public void playGame(){
+    public void playGame() {
         int overs = getNumberOfOvers();
         playInnings(team1, overs);
         System.out.println();
@@ -192,10 +192,11 @@ class Cricket extends Game implements GameInfo{
     public void playInnings(Team team, int overs) {
 
         int totalBalls = overs * 6;
-    
+
         for (int i = 0; i < totalBalls; i++) {
+
             String input = getRunsForBall(i, team.getName());
-    
+
             try {
                 switch (input.toUpperCase()) {
                     case "W":
@@ -231,23 +232,22 @@ class Cricket extends Game implements GameInfo{
                         }
                         break;
                 }
-    
+
                 if (team.isAllOut()) {
                     System.out.println("All wickets are fallen for " + team.getName() + "!");
                     break;
                 }
-    
+
                 if ((i + 1) % 6 == 0) {
                     System.out.println("Over " + ((i + 1) / 6) + " is Complete!");
                 }
-    
-            } catch (InvalidInputException e) {
+
+            } catch (InvalidInputException e) {     
                 System.out.println(e.getMessage());
                 i--;
             }
         }
     }
-    
 
     public void displayResults(int overs) {
         System.out.println("-----------------Match Results-----------------\n");
@@ -266,20 +266,29 @@ class Cricket extends Game implements GameInfo{
         System.out.println("Total Noball : " + team2.getTotalNoball());
         System.out.println("Total Wide : " + team2.getTotalWide());
 
-        if (team1.getTotalRuns() > team2.getTotalRuns()) {
+        if (team1.getTotalRuns() > team2.getTotalRuns()) 
+        {
             System.out.println("\n" + team1.getName() + " wins!");
-        } else if (team2.getTotalRuns() > team1.getTotalRuns()) {
+        } 
+        else if (team2.getTotalRuns() > team1.getTotalRuns()) 
+        {
             System.out.println("\n" + team2.getName() + " wins!");
-        } else {
+        } 
+        else 
+        {
             System.out.println("It's a tie!");
         }
     }
 
+    static{
+        System.out.println();
+        System.out.println("===============================");
+        System.out.println("Welcome to Cricket Game!");
+    }   
+
     public static void main(String[] args) {
 
         Cricket c = new Cricket();
-
-        c.welcomeMessage();
 
         c.selectGameFormat();
 
