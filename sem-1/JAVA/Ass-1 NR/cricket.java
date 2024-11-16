@@ -100,7 +100,44 @@ interface GameInfo{
     public void selectGameFormat();
 }
 
-class Cricket implements GameInfo{
+abstract class Game{
+
+    public abstract void playGame();
+    public abstract void rules();
+
+    public void selectGameFormat() {
+        System.out.println("Select Game Format!");
+        System.out.println("1. ODI");
+        System.out.println("2. T20");
+        System.out.println("3. Test");
+        System.out.println("4. IPL");
+
+        Scanner sc = new Scanner(System.in);
+        int choice = sc.nextInt();
+        String format;
+        switch (choice) {
+            case 1:
+                format = "ODI";
+                break;
+            case 2:
+                format = "T20";
+                break;
+            case 3:
+                format = "Test";
+                break;
+            case 4:
+                format = "IPL";
+                break;
+            default:
+                System.out.println("Invalid choice, defaulting to T20 format.");
+                format = "T20";
+        }
+        System.out.println("You selected " + format + " format.");
+        sc.close();
+    }
+}
+
+class Cricket extends Game implements GameInfo{
     private Team team1;
     private Team team2;
     public Scanner sc;
@@ -124,33 +161,22 @@ class Cricket implements GameInfo{
         System.out.println("Enter 'WD' for Wide Ball.\n");
     }
 
-    public void selectGameFormat() {
-        System.out.println("Select Game Format!");
-        System.out.println("1. ODI");
-        System.out.println("2. T20");
-        System.out.println("3. Test");
-        System.out.println("4. IPL");
+    public void playGame(){
+        int overs = getNumberOfOvers();
+        playInnings(team1, overs);
+        System.out.println();
+        System.out.println("========== First Inning is Over Score is ==========");
+        System.out.println(team1.getTotalRuns() + " / " + team1.getLostWickets());
+        System.out.println();
 
-        int choice = sc.nextInt();
-        String format;
-        switch (choice) {
-            case 1:
-                format = "ODI";
-                break;
-            case 2:
-                format = "T20";
-                break;
-            case 3:
-                format = "Test";
-                break;
-            case 4:
-                format = "IPL";
-                break;
-            default:
-                System.out.println("Invalid choice, defaulting to T20 format.");
-                format = "T20";
-        }
-        System.out.println("You selected " + format + " format.");
+        System.out.println("Second Inning Start\n");
+        playInnings(team2, overs);
+        System.out.println("========== Second Inning is Over Score is ==========");
+        System.out.println(team2.getTotalRuns() + " / " + team2.getLostWickets());
+        System.out.println();
+
+        displayResults(overs);
+
     }
 
     public int getNumberOfOvers() {
@@ -250,6 +276,7 @@ class Cricket implements GameInfo{
     }
 
     public static void main(String[] args) {
+
         Cricket c = new Cricket();
 
         c.welcomeMessage();
@@ -258,19 +285,7 @@ class Cricket implements GameInfo{
 
         c.rules();
 
-        int overs = c.getNumberOfOvers();
-        c.playInnings(c.team1, overs);
-        System.out.println();
-        System.out.println("========== First Inning is Over Score is ==========");
-        System.out.println(c.team1.getTotalRuns() + " / " + c.team1.getLostWickets());
-        System.out.println();
+        c.playGame();
 
-        System.out.println("Second Inning Start\n");
-        c.playInnings(c.team2, overs);
-        System.out.println("========== Second Inning is Over Score is ==========");
-        System.out.println(c.team2.getTotalRuns() + " / " + c.team2.getLostWickets());
-        System.out.println();
-
-        c.displayResults(overs);
     }
 }
