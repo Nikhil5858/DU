@@ -163,14 +163,16 @@ class Cricket extends Game implements GameInfo {
 
     public void playGame() {
         int overs = getNumberOfOvers();
-        playInnings(team1, overs);
+        playInnings(team1, overs,Integer.MAX_VALUE);
         System.out.println();
         System.out.println("========== First Inning is Over Score is ==========");
         System.out.println(team1.getTotalRuns() + " / " + team1.getLostWickets());
         System.out.println();
 
         System.out.println("Second Inning Start\n");
-        playInnings(team2, overs);
+        int target = team1.getTotalRuns() + 1;
+        System.out.println("Target : "+target);
+        playInnings(team2, overs,target);
         System.out.println("========== Second Inning is Over Score is ==========");
         System.out.println(team2.getTotalRuns() + " / " + team2.getLostWickets());
         System.out.println();
@@ -189,7 +191,7 @@ class Cricket extends Game implements GameInfo {
         return sc.next();
     }
 
-    public void playInnings(Team team, int overs) {
+    public void playInnings(Team team, int overs,int target) {
 
         int totalBalls = overs * 6;
 
@@ -231,6 +233,10 @@ class Cricket extends Game implements GameInfo {
                             throw new InvalidInputException("Invalid run input. Only 0, 1, 2, 3, 4, or 6 allowed.");
                         }
                         break;
+                }
+                if (team.getTotalRuns() > target) {
+                    System.out.println("Team 2 was Win!");
+                    break;
                 }
 
                 if (team.isAllOut()) {
