@@ -1,0 +1,52 @@
+
+
+
+db.STUDENT.insertMany([
+  { "Rno": 101, "Name": "Raju", "Branch": "CE" },
+  { "Rno": 102, "Name": "Amit", "Branch": "CE" },
+  { "Rno": 103, "Name": "Sanjay", "Branch": "ME" },
+  { "Rno": 104, "Name": "Neha", "Branch": "EC" },
+  { "Rno": 105, "Name": "Meera", "Branch": "EE" },
+  { "Rno": 106, "Name": "Mahesh", "Branch": "ME" }
+]);
+
+db.RESULT.insertMany([
+  { "Rno": 101, "SPI": 8.8 },
+  { "Rno": 102, "SPI": 9.2 },
+  { "Rno": 103, "SPI": 7.6 },
+  { "Rno": 104, "SPI": 8.2 },
+  { "Rno": 105, "SPI": 7.0 },
+  { "Rno": 107, "SPI": 8.9 }
+]);
+
+
+db.EMPLOYEE.insertMany([
+  { "EmployeeNo": "E01", "Name": "Tarun", "ManagerNo": null },
+  { "EmployeeNo": "E02", "Name": "Rohan", "ManagerNo": "E02" },
+  { "EmployeeNo": "E03", "Name": "Priya", "ManagerNo": "E01" },
+  { "EmployeeNo": "E04", "Name": "Milan", "ManagerNo": "E03" },
+  { "EmployeeNo": "E05", "Name": "Jay", "ManagerNo": "E01" },
+  { "EmployeeNo": "E06", "Name": "Anjana", "ManagerNo": "E04" }
+]);
+
+
+
+1
+Left Join
+db.STUDENT.aggregate({$lookup : {from : 'RESULT',localField:'Rno',foreignField:'Rno',as:'StudentResult'}})
+Inner join
+db.STUDENT.aggregate({$lookup : {from : 'RESULT',localField:'Rno',foreignField:'Rno',as:'StudentResult'}},{$unwind:'$StudentResult'})
+
+2
+db.STUDENT.aggregate({$lookup : {from : 'RESULT',localField:'Rno',foreignField:'Rno',as:'StudentResult'}},{$project : {Rno:1,Name:1,Branch:1,SPI:1}})
+
+3
+db.STUDENT.aggregate({$lookup : {from : 'RESULT',localField:'Rno',foreignField:'Rno',as:'StudentResult'}},{$match : {Branch : 'CE'}},{$project : {Rno:1,Name:1,Branch:1,SPI:1}})
+
+4
+db.STUDENT.aggregate({$lookup : {from : 'RESULT',localField:'Rno',foreignField:'Rno',as:'StudentResult'}},{$match : {Branch : {$ne:'EC'}}},{$project : {Rno:1,Name:1,Branch:1,SPI:1}})
+
+
+
+
+
