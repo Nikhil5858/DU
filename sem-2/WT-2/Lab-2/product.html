@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <script>
+    let array = [
+      {
+        ProId: "1",
+        ProImage: "https://m.media-amazon.com/images/G/31/apparel/rcxgs/tile._CB483369979_.gif",
+        ProName: "Ant Esports MK1400 Pro Backlit",
+        ProPrice: "₹549",
+        ProDetails: "Ant Esports MK1400 Pro Backlit Gaming Keyboard Comes with Stylish 104 keys. Its durable quality & Elegant black & white key cap design enhances your gaming & work experience.",
+      },
+      {
+        ProId: "2",
+        ProImage: "https://m.media-amazon.com/images/G/31/apparel/rcxgs/tile._CB483369979_.gif",
+        ProName: "Logitech M186 Wireless Mouse",
+        ProPrice: "₹495",
+        ProDetails: "Compact Mouse: With a comfortable and contoured shape, this Logitech ambidextrous wireless mouse feels great in either right or left hand and is far superior to a touchpad",
+      },
+      {
+        ProId: "3",
+        ProImage: "https://m.media-amazon.com/images/G/31/apparel/rcxgs/tile._CB483369979_.gif",
+        ProName: "AMD 5000 Series Ryzen 5 5600X Desktop Processor 6 cores 12 Threads ",
+        ProPrice: "₹10,899",
+        ProDetails: "Memory Support: DDR4 3200MHz, Memory Channels: 2, TDP: 65W, PCI Express Generation : PCIe Gen 4 ",
+      },
+      {
+        ProId: "4",
+        ProImage: "https://m.media-amazon.com/images/G/31/apparel/rcxgs/tile._CB483369979_.gif",
+        ProName: "Canon PIXMA E470",
+        ProPrice: "₹4,499",
+        ProDetails: "Printer type: Inkjet ; Functions: Print, Scan, Copy ; Printer output: Colour ; Connectivity: WiFi, USB ; Scanner: Yes ; Scanner resolution:600 x 1200dpi",
+      },
+      {
+        ProId: "5",
+        ProImage: "https://m.media-amazon.com/images/G/31/apparel/rcxgs/tile._CB483369979_.gif",
+        ProName: "Samsung Galaxy S24 5G ",
+        ProPrice: "₹52,851",
+        ProDetails: "Easy to grip. Satisfying to hold. With their unified design and satin finish, Galaxy S24 feels as smooth as it looks.",
+      },
+      {
+        ProId: "6",
+        ProImage: "https://m.media-amazon.com/images/G/31/apparel/rcxgs/tile._CB483369979_.gif",
+        ProName: "Samsung Galaxy Ring",
+        ProPrice: "₹38,999",
+        ProDetails: "Galaxy Ring sizes differ from standard ring sizes; Purchase the Samsung Galaxy Ring Sizing Kit on Amazon first, and then select the size that fits you best ",
+      }
+    ]
+  </script>
+
+  <nav class="navbar bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light">Navbar</a>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container p-3">
+    <div class="row">
+
+      <script>
+        for (obj of array) {
+          document.write('<div class="col-md-8 col-lg-6 col-xl-4 mt-3">')
+          document.write('  <div class="card text-black">')
+          document.write('    <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>')
+          document.write('    <img src="'+obj.ProImage+'" class="card-img-top" alt="Apple Computer" />')
+          document.write('    <div class="card-body">')
+          document.write('      <div class="text-center">')
+          document.write('        <h5 class="card-title">"'+obj.ProName+'"</h5>')
+          document.write('      </div>')
+          document.write('      <div>')
+          document.write('        <div class="d-flex justify-content-center mt-3">')
+          document.write('          <span>"'+obj.ProPrice+'"</span>')
+          document.write('        </div>')
+          document.write('      </div>')
+          document.write('      <div class="d-flex justify-content-between total font-weight-bold mt-3">')
+          document.write('        <span>"'+obj.ProDetails+'"</span>')
+          document.write('      </div>')
+          document.write('    </div>')
+          document.write('  </div>')
+          document.write('</div>')
+          
+        }
+      </script>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

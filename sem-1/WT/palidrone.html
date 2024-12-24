@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse a Number</title>
+</head>
+<body>
+    <script>
+        let num = Number(prompt("Enter a number:"));
+        
+        let temp = num; 
+        let rev = 0;  
+        
+        while (temp > 0) {
+            let r = temp % 10; //extract last digit 121
+            rev = rev * 10 + r; // 0 * 10 + 1
+            temp = Math.floor(temp / 10); // 121 /10 = 12.1 = 12
+        }
+
+        document.writeln(`The reversed number is: ${rev}<br>`);
+    
+        if(num == rev){
+            document.writeln("Number is Palidrone")
+        }
+        else{
+            document.writeln("Number is not Palidrone")
+        }
+
+    </script>
+</body>
+</html>

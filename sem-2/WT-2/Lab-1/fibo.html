@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let fibo = 1
+        let a = 0
+        let b = 1
+
+        let num = Number(prompt("Enter Number : "))
+
+        for (let i = 2; i <= num; i++) {
+            fibo = a + b
+            a=b
+            b=fibo
+            document.writeln(fibo)
+        }
+    </script>
+</body>
+</html>

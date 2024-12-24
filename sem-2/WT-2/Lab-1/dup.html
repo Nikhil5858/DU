@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Duplicates</title>
+</head>
+<body>
+    
+    <script>
+        let array = [10, 10, 20, 30, 540];
+        let dup = [];
+
+        for (let i = 0; i < array.length; i++) {
+            let isDuplicate = false;
+            for (let j = 0; j < dup.length; j++) {
+                if (array[i] === dup[j]) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+            if (!isDuplicate) {
+                dup.push(array[i]);
+            }
+        }
+
+    document.writeln(dup)
+    </script>
+
+</body>
+</html>
