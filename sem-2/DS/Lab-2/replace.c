@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void main(){
+int main(){
     int num,i;
     int re1,re2;
     printf("Enter Number of Element : \n");
@@ -28,4 +28,5 @@ void main(){
     for(i=0;i<num;i++){
         printf("%d",array[i]);
     }
+    return 0;
 }
