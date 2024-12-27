@@ -15,8 +15,8 @@ void main()
     for(i=0;i<num;i++){
         scanf("%d",&array[i]);
         sum = sum + array[i];
-        avg = sum / num;
     }
+    avg = sum / num;
     printf("Total Sum is : %d\n",sum);
     printf("Total Average is : %f",avg);
 }
