@@ -4,6 +4,8 @@ const app = express();
 
 const facultuyRouter = require('./routes/facultyRouter')
 const productRouter = require('./routes/productRouter')
+const studentRouter = require('./routes/studentRouter')
+
 app.use(express.json())
 
 try {
@@ -15,5 +17,6 @@ try {
 
 app.use('/api/faculty',facultuyRouter)
 app.use('/api/product',productRouter)
+app.use('/api/student',studentRouter)
 
 app.listen(3000)
