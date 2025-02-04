@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Header = () => {
+const Header = ({title='this is default props'}) => {
   return (
     <header>
-        <h1>This Is Header</h1>
+        <h1>{title}</h1>
     </header>
   )
 }

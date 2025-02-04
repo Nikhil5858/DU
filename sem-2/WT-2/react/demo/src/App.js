@@ -12,9 +12,9 @@ function App() {
 
   return (
     <div style={style}>
-      <Header/>
-      <Content/>
-      <Footer/>
+      <Header title='this is title̥'/>
+      <Content />
+      <Footer />
     </div>
   );
 }
