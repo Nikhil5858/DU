@@ -104,7 +104,73 @@ function Faculties() {
 
     return (
         <div className="container">
+                
+            <button type="button" className="btn btn-primary float-lg-end sticky-top mt-4" data-bs-toggle="modal" data-bs-target="#addfacultydata" data-whatever="@mdo">Add Faculty</button>
+
             <div className="row">
+            <div className="modal fade" id="addfacultydata" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Add Faculty Data</h5>
+                        </div>
+                        <div className="modal-body">
+                            <form>
+                            <div className="mb-2">
+                                <label className="form-label">Add Faculty Name : </label>
+                                <input className="form-control form-control-md" type="text" aria-label=".form-control-sm example"/>
+                            </div>
+                            <div className="mb-2">
+                                <label className="form-label">Add Designation : </label>
+                                <input className="form-control form-control-md" type="text" aria-label=".form-control-sm example"/>
+                            </div>
+                            <div className="mb-2">
+                                <label className="form-label">Add Degree : </label>
+                                <input className="form-control form-control-md" type="text" aria-label=".form-control-sm example"/>
+                            </div>
+                            <div className="mb-2">
+                                <label className="form-label">Add Experiance : </label>
+                                <input className="form-control form-control-md" type="text" aria-label=".form-control-sm example"/>
+                            </div>
+                            <div className="mb-2">
+                                <label className="form-label">Add Image Url : </label>
+                                <input className="form-control form-control-md" type="text" aria-label=".form-control-sm example"/>
+                            </div>
+                            </form>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Send message</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                {/* <form className='border mt-4'>
+                    <h1 className='justify-content-center d-flex mt-2'>Faculty Data</h1>
+                    <div className="mb-2">
+                        <label className="form-label">Add Faculty Name : </label>
+                        <input className="form-control form-control-md" type="text" aria-label=".form-control-sm example"/>
+                    </div>
+                    <div className="mb-2">
+                        <label className="form-label">Add Designation : </label>
+                        <input className="form-control form-control-md" type="text" aria-label=".form-control-sm example"/>
+                    </div>
+                    <div className="mb-2">
+                        <label className="form-label">Add Degree : </label>
+                        <input className="form-control form-control-md" type="text" aria-label=".form-control-sm example"/>
+                    </div>
+                    <div className="mb-2">
+                        <label className="form-label">Add Experiance : </label>
+                        <input className="form-control form-control-md" type="text" aria-label=".form-control-sm example"/>
+                    </div>
+                    <div className="mb-2">
+                        <label className="form-label">Add Image Url : </label>
+                        <input className="form-control form-control-md" type="text" aria-label=".form-control-sm example"/>
+                    </div>
+                   
+                    <button type="submit" className="btn btn-primary mb-3 mt-3 d-grid gap-2 col-6 mx-auto">Submit</button>
+                </form> */}
+
                 {facultis.map((fact) => (
                     <div className="col-md-4 p-3 mt-2" key={fact.factId}>
                         <Card style={{ width: '18rem' }}>
