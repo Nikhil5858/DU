@@ -1,7 +1,7 @@
 public class stringbracket {
     public static void main(String[] args) {
         
-        String s = "()()(){[]}";
+        String s = "{{{))(}}}";
         int sq = 0;
         int ro = 0;
         int cl = 0;
