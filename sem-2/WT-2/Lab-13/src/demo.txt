@@ -1,0 +1,169 @@
+import { useState } from "react";
+
+export default function Faculties() {
+  const arr = [
+    {
+      id: 1,
+      name: "Dr. Gopi Sanghani",
+      designation: "Dean - School of Computer Science",
+      imgUrl:
+        "https://du-website.s3.ap-south-1.amazonaws.com/U01/Faculty-Photo/5---29-04-2023-11-00-29.jpg",
+    },
+    {
+      id: 2,
+      name: "Dr. Nilesh Gambhava",
+      designation: "Professor",
+      imgUrl:
+        "https://du-website.s3.ap-south-1.amazonaws.com/U01/Faculty-Photo/3---28-04-2023-02-02-42.jpg",
+    },
+    {
+      id: 3,
+      name: "Dr. Pradyumansinh Jadeja",
+      designation: "Associate Professor",
+      imgUrl:
+        "https://du-website.s3.ap-south-1.amazonaws.com/U01/Faculty-Photo/6---28-04-2023-02-06-07.jpg",
+    },
+  ];
+  const [faculties, setFaculties] = useState(arr);
+
+  const [newFaculty, setNewFaculty] = useState({
+    id: "",
+    name: "",
+    designation: "",
+    imgUrl: "",
+  });
+
+  const [editFaculty, setEditFaculty] = useState(null);
+
+  const inputChange = (e) => {
+    setNewFaculty({
+      ...newFaculty,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const inputEditChange = (e) => {
+    setEditFaculty({
+      ...editFaculty,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const editFacultyDetails = (faculty) => {
+    setEditFaculty(faculty);
+  };
+
+  const updateFaculty = () => {
+    setFaculties((prev) =>
+      prev.map((fac) => (fac.id === editFaculty.id ? editFaculty : fac))
+    );
+    setEditFaculty(null);
+  };
+
+  const addFaculty = () => {
+    setFaculties([
+      ...faculties,
+      {
+        ...newFaculty,
+        id: faculties[faculties.length - 1].id + 1,
+      },
+    ]);
+    setNewFaculty({
+      id: "",
+      name: "",
+      designation: "",
+      imgUrl: "",
+    });
+  };
+
+  return (
+    <div>
+      <h2>Faculties</h2>
+      <div className="card p-3 mb-3">
+        <h1>Add Faculty</h1>
+        <input
+          type="text"
+          placeholder="Name"
+          className="form-control mb-2"
+          name="name"
+          value={newFaculty.name}
+          onChange={(e) => inputChange(e)}
+        />
+        <input
+          type="text"
+          placeholder="Designation"
+          className="form-control mb-2"
+          name="designation"
+          value={newFaculty.designation}
+          onChange={(e) => inputChange(e)}
+        />
+        <input
+          type="text"
+          placeholder="Image URL"
+          className="form-control mb-2"
+          name="imgUrl"
+          value={newFaculty.imgUrl}
+          onChange={(e) => inputChange(e)}
+        />
+        <button className="btn btn-success" onClick={() => addFaculty()}>
+          Add Faculty
+        </button>
+      </div>
+      {editFaculty && (
+        <div className="card p-3 mb-3">
+          <h1>Edit Faculty</h1>
+          <input
+            type="text"
+            placeholder="Name"
+            className="form-control mb-2"
+            name="name"
+            value={editFaculty.name}
+            onChange={(e) => inputEditChange(e)}
+          />
+          <input
+            type="text"
+            placeholder="Designation"
+            className="form-control mb-2"
+            name="designation"
+            value={editFaculty.designation}
+            onChange={(e) => inputEditChange(e)}
+          />
+          <input
+            type="text"
+            placeholder="Image URL"
+            className="form-control mb-2"
+            name="imgUrl"
+            value={editFaculty.imgUrl}
+            onChange={(e) => inputEditChange(e)}
+          />
+          <button className="btn btn-warning" onClick={() => updateFaculty()}>
+            Update Faculty
+          </button>
+        </div>
+      )}
+      <div class="container">
+        <div class="row">
+          {faculties.map((faculty, index) => (
+            <div class="col-4 card">
+              {index}
+              <img src={faculty.imgUrl} class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">{faculty.name}</h5>
+                <p class="card-text">
+                  Designation: {faculty.designation}
+                  <br />
+                </p>
+                <button
+                  className="btn btn-warning"
+                  onClick={() => editFacultyDetails(faculty)}
+                >
+                  Edit
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
