@@ -1,7 +1,7 @@
 public class harshed {
     public static void main(String[] args) {
         
-        int num = 22;
+        int num = 21;
         int temp = num;
         int sum = 0;
 
