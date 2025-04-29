@@ -1,0 +1,131 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node 
+{
+    int info;
+    struct node *link;
+};
+
+struct node *first;
+
+void insert_first(int element)
+{
+    struct node *newnode=malloc(sizeof(struct node));
+    if(first==NULL)
+    {
+        first=malloc(sizeof(struct node));
+        first->info=element;
+        first->link=NULL;
+    }
+    else
+    {
+        newnode->info=element;
+        newnode->link=first;
+        first=newnode;
+    }
+}
+
+void insert_last(int element)
+{
+    if(first==NULL)
+    {
+        first=malloc(sizeof(struct node));
+        first->info=element;
+        first->link=NULL;
+    }
+    else
+    {
+        struct node *newnode=malloc(sizeof(struct node));
+        struct node *temp;
+        temp=first;
+        while(temp->link!=NULL)
+        {
+            temp=temp->link;
+        }
+        newnode->info=element;
+        temp->link=newnode;
+        newnode->link=NULL;
+    }
+}
+
+void insert_order(int element)
+{
+    struct node *newnode=malloc(sizeof(struct node));
+    
+    if(first==NULL)
+    {
+        first=malloc(sizeof(struct node));
+        first->info=element;
+        first->link=NULL;
+    }
+    else if(element<=first->info)
+    {
+        newnode->info=element;
+        newnode->link=first;
+        first=newnode;
+    }
+    else
+    {
+        newnode->info=element;
+        struct node *temp;  
+        temp=first;
+        while(temp->link!=NULL && newnode->info>=(temp->link)->info)
+        {
+            temp=temp->link;
+        }
+        
+        newnode->link=temp->link;
+        temp->link=newnode;
+    }
+}
+
+void display()
+{
+    struct node *temp;
+    temp=first;
+    while(temp!=NULL)
+    {
+        printf("%d ",temp->info);
+        temp=temp->link;
+    }
+}
+
+void main() 
+{
+    
+    int choise,element;
+    
+    while(choise!=4)
+    {
+        printf("\n1.Insert_first\n2.Insert_Last\n3.Insert_Order\n4.Exit\n");
+        printf("Enter Your Choise : ");
+        scanf("%d",&choise);
+        
+        switch(choise)
+        {
+            case 1:
+                printf("Enter Element : ");
+                scanf("%d",&element);
+                insert_first(element);
+                display();
+                break;
+            case 2:
+                printf("Enter Element : ");
+                scanf("%d",&element);
+                insert_last(element);
+                display();
+                break;
+            case 3:
+                printf("Enter Element : ");
+                scanf("%d",&element);
+                insert_order(element);
+                display();
+                break;
+            case 4:
+                exit(0);
+                break;
+        }
+    }
+    
+}

@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define length 3
+
+int queue[length];
+int front=-1;
+int rear=-1;
+
+void insert()
+{
+    int element;
+    if(rear>=length-1)
+    {
+        printf("Queue Is Overflow");
+    }
+    else if(front==-1)
+    {
+        front++;
+        rear++;
+        printf("Enter Element:");
+        scanf("%d",&element);
+        queue[rear]=element;
+    }
+    else
+    {
+        rear++;
+        printf("Enter Element:");
+        scanf("%d",&element);
+        queue[rear]=element;
+    }
+}
+
+void delete_first()
+{
+    if(front<0)
+    {
+        printf("Queue Is Underflow");
+    }
+    else if(front==rear)
+    {
+        queue[front]=0;
+        front=-1;
+        rear=-1;
+    }
+    else
+    {
+        queue[front]=0;
+        front++;
+    }
+}
+
+void display()
+{
+    int i;
+    for(i=front;i<=rear;i++)
+    {
+        printf("%d ",queue[i]);
+    }
+}
+
+void main() 
+{
+    int choise;
+    
+    while(choise!=3)
+    {
+        printf("\n1.Insert\n2.Delete\n3.Exit\n");
+        printf("Enter Your Choise : ");
+        scanf("%d",&choise);
+        
+        switch(choise)
+        {
+            case 1:
+                insert();
+                display();
+                break;
+            case 2:
+                delete_first();
+                display();
+                break;
+            case 3:
+                exit(0);
+                break;
+        }
+    }
+}

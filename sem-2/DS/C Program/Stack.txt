@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define length 3
+
+int top=-1;
+int stack[length];
+
+void delete_last()
+{
+    if(top<0)
+    {
+        printf("Stack is Underflow");
+    }
+    else
+    {
+        stack[top]=0;
+        top--;
+    }
+}
+
+void insert()
+{
+    int element;
+    if(top>=length-1)
+    {
+        printf("\nStack Overflow\n");
+    }
+    else
+    {
+        top++;
+        printf("Enter Element :");
+        scanf("%d",&element);
+        stack[top]=element;
+    }
+}
+
+void display()
+{
+    int i;
+    for(i=0;i<=top;i++)
+    {
+        printf("%d ",stack[i]);
+    }
+}
+
+void main() {
+    int choise;
+    
+    while(choise!=4)
+    {
+        printf("\n1.Insert\n2.Delete\n3.Peep\n4.Exit\n");
+        printf("Enter your choise :");
+        scanf("%d",&choise);
+        
+        switch(choise)
+        {
+            case 1:
+                insert();
+                display();
+                break;
+            case 2:
+                delete_last();
+                display();
+            break;
+            case 3:
+                printf("%d",stack[top]);
+                break;
+            case 4:
+                exit(0);
+                break;
+        }
+    }
+}

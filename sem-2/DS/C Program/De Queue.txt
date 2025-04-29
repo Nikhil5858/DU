@@ -1,0 +1,139 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define length 3
+
+int front=-1;
+int rear=-1;
+int queue[length];
+
+void insert_first()
+{
+    int element;
+    if(front==0)
+    {
+        printf("Queue Overflow..");
+    }
+    else if(front==-1)
+    {
+        front++;
+        rear++;
+        printf("Enter Element : ");
+        scanf("%d",&element);
+        queue[front]=element;
+    }
+    else
+    {
+        front--;
+        printf("Enter Element : ");
+        scanf("%d",&element);
+        queue[front]=element;
+    }
+}
+
+void insert_last()
+{
+    int element;
+    if(rear>=length-1)
+    {
+        printf("Queue Overflow..");
+    }
+    else if(rear==-1)
+    {
+        front++;
+        rear++;
+        printf("Enter Element : ");
+        scanf("%d",&element);
+        queue[rear]=element;
+    }
+    else
+    {
+        rear++;
+        printf("Enter Element : ");
+        scanf("%d",&element);
+        queue[rear]=element;
+    }
+}
+
+void delete_first()
+{
+    if(front==-1)
+    {
+        printf("Queue Underflow");
+    }
+    else if(front==rear)
+    {
+        queue[front]=0;
+        front=-1;
+        rear=-1;
+    }
+    else
+    {
+        queue[front]=0;
+        front++;
+    }
+}
+
+void delete_last()
+{
+    if(rear==-1)
+    {
+        printf("Queue Underflow");
+    }
+    else if(front==rear)
+    {
+        queue[rear]=0;
+        rear=-1;
+        front=-1;
+    }
+    else
+    {
+        queue[rear]=0;
+        rear--;
+    }
+}
+
+
+void display()
+{
+    int i;
+    for(i=front;i<=rear;i++)
+    {
+        printf("%d ",queue[i]);
+    }
+}
+
+void main() {
+    
+    int choise;
+    
+    while(choise!=5)
+    {
+        printf("\n1.Insert_First\n2.Insert_Last\n3.Delete_First\n4.Delete_Last\n5.Exit\n");
+        printf("Enter Your Choise : ");
+        scanf("%d",&choise);
+        
+        switch(choise)
+        {
+            case 1:
+                insert_first();
+                display();
+                break;
+            case 2:
+                insert_last();
+                display();
+                break;
+            case 3:
+                delete_first();
+                display();
+                break;
+            case 4:
+                delete_last();
+                display();
+                break;
+            case 5:
+                exit(0);
+                break;
+        }
+        
+    }
+}
