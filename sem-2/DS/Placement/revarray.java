@@ -1,9 +1,10 @@
 public class revarray {
+
     public static void main(String[] args) {
-        int[] array = {10,51,545,31,54,123,3};
+        int[] array = { 10, 20, 30, 40, 50, 60, 70 };
         int start = 0;
         int end = array.length - 1;
-        
+
         while (start < end) {
             int temp = array[start];
             array[start] = array[end];
