@@ -1,18 +1,30 @@
 public class stringbracket {
     public static void main(String[] args) {
         
-        String s = "{{{))(}}}";
+        String s = "{)";
         int sq = 0;
         int ro = 0;
         int cl = 0;
 
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            if(ch == '(' || ch == '[' || ch == '{'){
+            if(ch == '('){
                 ro++;
             }
-            else if(ch == ')' || ch == ']' || ch == '}'){
+            if (ch == '[') {
+                sq++;
+            }
+            if (ch == '{') {
+                cl++;
+            }
+            if(ch == ')'){
                 ro--;
+            }
+            if (ch == ']') {
+                sq--;
+            }
+            if (ch == '}') {
+                cl--;
             }
             else{
                 System.out.println("Invalid");
