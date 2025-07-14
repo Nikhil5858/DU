@@ -1,58 +1,54 @@
-import Header from './Header';
-import Content from './Content';
-import Footer from './Footer';
-import AddItem from './AddItem';
-import { useState } from 'react';
+import Header from "./Header";
+import { useState,useEffect } from "react";
+import UserProfile from "./UserProfile";
+
+const user1 = {
+  name: "Alex Johnson",
+  role: "Frontend Developer",
+  bio: "Passionate about building intuitive user interfaces with React.",
+  joinDate: "January 2022",
+};
+
+const user2 = {
+  name: "Sam Lee",
+  role: "UX Designer",
+  bio: "Creating beautiful and functional user experiences.",
+  joinDate: "March 2023",
+};
+
+// const string = "Hi there , I'm a web developer";
+// let removeSpace = "";
+// for (let i = 0; i < string.length; i++) {
+//   if (string[i] === " ") removeSpace += "";
+//   else removeSpace += string[i];
+// }
+// console.log(removeSpace);
 
 function App() {
-  const [newItem, setNewItem] = useState('');
+  const [count, setCount] = useState(0);
 
-  const array = [
-    {
-      id:1,
-      name:"abc",
-      game:"xyz"
-    },
-    {
-      id:2,
-      name:"abc",
-      game:"xyz"
-    },
-    {
-      id:3,
-      name:"abc",
-      game:"xyz"
-    },
-    {
-      id:4,
-      myName:"abc",
-      game:"xyz"
-    },
-  ];
+  const[second,setSeconds] = useState(0);
 
-  const style = {
-    textAlign: 'center',
-    backgroundColor: '#f4f4f4',
-    color: '#333',
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(newItem);
-    setNewItem('')
-  };
+  useEffect(()=>{
+    const interval = setInterval(()=>{
+      setSeconds(prev=>prev+1)
+    },1000)
+    return ()=> clearInterval(interval);
+  },[])
 
   return (
-    <div style={style}>
-      <Header title='this is title' />
-      <AddItem
-        newItem={newItem}
-        setNewItem={setNewItem}
-        handleSubmit={handleSubmit}
+    <>
+      <Header />
+      <input type="button" onClick={() => setCount(count + 1)} value={"+"} />
+      <input
+        type="button"
+        onClick={() => setCount(count > 0 ? count - 1 : 0)}
+        value={"-"}
       />
-      <Content />
-      <Footer />
-    </div>
+      <p>Result : {count}</p>
+      {/* <UserProfile user={user1}/> */}
+      {/* <UserProfile user={user2}/> */}
+    </>
   );
 }
 

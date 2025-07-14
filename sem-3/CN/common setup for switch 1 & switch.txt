@@ -1,0 +1,51 @@
+page 1:
+common setup for switch 1 & switch 2
+the below commands will enable the switch into config mode and allow you to change settings into the switch
+command:
+	enable
+	configure terminal
+
+the below commands will create a vlan with number 10 and its name will be vlan10
+command: 
+	vlan 10
+	name vlan10
+	exit
+
+the below commands will create a vlan with number 20 and its name will be vlan20
+command:
+	vlan 20
+	name vlan20
+	exit
+
+
+
+
+Page 2:
+
+Interface vlan config for both switches
+
+The below command's will select the interface fa0/1 and then we are changing the port mode to access from trunk and then setting the port to access for vlan 10
+command:
+	interface range fa0/1
+	switchport mode access
+	switchport access vlan 10
+	exit
+
+same configuration for fa0/2 interface and we will use vlan 20
+command:
+	interface range fa0/2
+	switchport mode access
+	switchport access vlan 20
+	exit
+----------------------------------------------------------------------
+Configure trunk port between switches
+for both switches we will do the below configuraiton
+it will set the  device connected on interface fa0/3 to trunk
+command:
+	interface range fa0/3
+	switchport mode trunk
+	exit
+
+Now exit from config mode from both switches
+command:
+	exit

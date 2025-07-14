@@ -5,3 +5,632 @@ https://miro.com/?gclsrc=aw.ds&&utm_source=google&utm_medium=cpc&utm_campaign=S|
 https://phantombuster.com/
 
 courier management system
+
+
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Appointment_Delete]    Script Date: 13-07-2025 5.43.26 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_Appointment_Delete]
+    @AppointmentID INT
+AS
+BEGIN
+    DELETE FROM Appointment WHERE AppointmentID = @AppointmentID
+END
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Appointment_Insert]    Script Date: 13-07-2025 5.44.13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_Appointment_Insert]
+    @DoctorID INT,
+    @PatientID INT,
+    @AppointmentDate DATETIME,
+    @AppointmentStatus NVARCHAR(20),
+    @Description NVARCHAR(250),
+    @SpecialRemarks NVARCHAR(100),
+    @UserID INT,
+    @TotalConsultedAmount DECIMAL(5,2) = NULL
+AS
+BEGIN
+    INSERT INTO Appointment (DoctorID, PatientID, AppointmentDate, AppointmentStatus, Description, SpecialRemarks, Created, Modified, UserID, TotalConsultedAmount)
+    VALUES (@DoctorID, @PatientID, @AppointmentDate, @AppointmentStatus, @Description, @SpecialRemarks, GETDATE(), GETDATE(), @UserID, @TotalConsultedAmount)
+END
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Appointment_select]    Script Date: 13-07-2025 5.44.29 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_Appointment_select]
+AS
+BEGIN
+    SELECT A.AppointmentID, A.AppointmentDate, A.AppointmentStatus, A.Description, A.SpecialRemarks,
+       A.TotalConsultedAmount, A.Created, A.Modified,
+       D.Name AS DoctorName, P.Name AS PatientName, U.UserName
+	FROM Appointment A
+	INNER JOIN Doctor D ON A.DoctorID = D.DoctorID
+	INNER JOIN Patient P ON A.PatientID = P.PatientID
+	INNER JOIN [User] U ON A.UserID = U.UserID
+	ORDER BY A.AppointmentDate
+END
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Appointment_selectById]    Script Date: 13-07-2025 5.44.44 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_Appointment_selectById]
+    @AppointmentID INT
+AS
+BEGIN
+    SELECT AppointmentID, DoctorID, PatientID, AppointmentDate, AppointmentStatus,
+       Description, SpecialRemarks, TotalConsultedAmount, Created, Modified, UserID
+	FROM Appointment
+	WHERE AppointmentID = @AppointmentID
+	ORDER BY AppointmentDate
+END
+
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Appointment_Update]    Script Date: 13-07-2025 5.44.53 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_Appointment_Update]
+    @AppointmentID INT,
+    @DoctorID INT,
+    @PatientID INT,
+    @AppointmentDate DATETIME,
+    @AppointmentStatus NVARCHAR(20),
+    @Description NVARCHAR(250),
+    @SpecialRemarks NVARCHAR(100),
+    @UserID INT,
+    @TotalConsultedAmount DECIMAL(5,2) = NULL
+AS
+BEGIN
+    UPDATE Appointment
+    SET DoctorID = @DoctorID,
+        PatientID = @PatientID,
+        AppointmentDate = @AppointmentDate,
+        AppointmentStatus = @AppointmentStatus,
+        Description = @Description,
+        SpecialRemarks = @SpecialRemarks,
+        Modified = GETDATE(),
+        UserID = @UserID,
+        TotalConsultedAmount = @TotalConsultedAmount
+    WHERE AppointmentID = @AppointmentID
+END
+
+
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Department_Update]    Script Date: 13-07-2025 5.45.43 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_Department_Update]
+	@DepartmentID int,
+	@DepartmentName nvarchar(100),
+	@Description nvarchar(250),
+	@IsActive bit = 1,
+	@UserID int
+as
+begin
+	update Department set DepartmentName=@DepartmentName,[Description]=@Description,IsActive=@IsActive,Modified=GETDATE(),UserID=@UserID
+	where DepartmentID= @DepartmentID
+end
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Department_SelectById]    Script Date: 13-07-2025 5.45.41 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_Department_SelectById]
+	@DepartmentID int
+as 
+begin
+	SELECT D.DepartmentID, D.DepartmentName, D.Description, D.IsActive, D.Created, D.Modified, U.UserName
+	FROM Department D
+	INNER JOIN [User] U ON D.UserID = U.UserID
+	WHERE D.DepartmentID = @DepartmentID
+	ORDER BY D.DepartmentName	
+end
+
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Department_Select]    Script Date: 13-07-2025 5.45.39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_Department_Select]
+as 
+begin
+	SELECT D.DepartmentID, D.DepartmentName, D.Description, D.IsActive, D.Created, D.Modified, U.UserName
+	FROM Department D
+	INNER JOIN [User] U ON D.UserID = U.UserID
+	ORDER BY D.DepartmentName
+end
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Department_Insert]    Script Date: 13-07-2025 5.45.37 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_Department_Insert]
+	@DepartmentName nvarchar(100),
+	@Description nvarchar(250),
+	@IsActive bit = 1,
+	@UserID int
+as
+begin
+	insert into Department(DepartmentName,[Description],IsActive,Created,Modified,UserID)
+	values (@DepartmentName,@Description,@IsActive,GETDATE(),GETDATE(),@UserID)
+end
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Department_Delete]    Script Date: 13-07-2025 5.45.34 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_Department_Delete]
+	@DepartmentID int
+as
+begin
+	delete from Department where DepartmentID=@DepartmentID
+end
+
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_DepartmentDoctor_selectById]    Script Date: 13-07-2025 5.46.45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[sp_DepartmentDoctor_selectById]
+@DoctorDepartmentID INT
+AS
+SELECT DD.DoctorDepartmentID, DD.DoctorID, DD.DepartmentID, DD.Created, DD.Modified, DD.UserID
+FROM DoctorDepartment DD
+WHERE DD.DoctorDepartmentID = @DoctorDepartmentID
+ORDER BY DD.DoctorDepartmentID
+
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_DepartmentDoctor_select]    Script Date: 13-07-2025 5.46.43 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_DepartmentDoctor_select]
+    @DoctorID INT
+AS
+BEGIN
+    SELECT d.* 
+    FROM Department d
+    INNER JOIN DoctorDepartment dd ON d.DepartmentID = dd.DepartmentID
+    WHERE dd.DoctorID = @DoctorID
+END
+
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Doctor_Update]    Script Date: 13-07-2025 5.47.14 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_Doctor_Update]
+    @DoctorID INT,
+    @Name NVARCHAR(100),
+    @Phone NVARCHAR(20),
+    @Email NVARCHAR(100),
+    @Qualification NVARCHAR(100),
+    @Specialization NVARCHAR(100),
+    @IsActive BIT,
+    @UserID INT
+AS
+BEGIN
+    UPDATE Doctor
+    SET Name = @Name,
+        Phone = @Phone,
+        Email = @Email,
+        Qualification = @Qualification,
+        Specialization = @Specialization,
+        IsActive = @IsActive,
+        Modified = GETDATE(),
+        UserID = @UserID
+    WHERE DoctorID = @DoctorID
+END
+
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Doctor_SelectById]    Script Date: 13-07-2025 5.47.13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_Doctor_SelectById]
+    @DoctorID INT
+AS
+BEGIN
+    SELECT D.DoctorID, D.Name, D.Phone, D.Email, D.Qualification, D.Specialization, D.IsActive, D.Created, D.Modified, U.UserName
+	FROM Doctor D
+	INNER JOIN [User] U ON D.UserID = U.UserID
+	WHERE D.DoctorID = @DoctorID
+	ORDER BY D.Name
+END
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Doctor_Select]    Script Date: 13-07-2025 5.47.11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_Doctor_Select]
+AS
+BEGIN
+    SELECT D.DoctorID, D.Name, D.Phone, D.Email, D.Qualification, D.Specialization, D.IsActive, D.Created, D.Modified, U.UserName
+	FROM Doctor D
+	INNER JOIN [User] U ON D.UserID = U.UserID
+	ORDER BY D.Name
+END
+
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Doctor_Insert]    Script Date: 13-07-2025 5.47.10 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_Doctor_Insert]
+    @Name NVARCHAR(100),
+    @Phone NVARCHAR(20),
+    @Email NVARCHAR(100),
+    @Qualification NVARCHAR(100),
+    @Specialization NVARCHAR(100),
+    @IsActive BIT = 1,
+    @UserID INT
+AS
+BEGIN
+    INSERT INTO Doctor (Name, Phone, Email, Qualification, Specialization, IsActive, Created, Modified, UserID)
+    VALUES (@Name, @Phone, @Email, @Qualification, @Specialization, @IsActive, GETDATE(), GETDATE(), @UserID)
+END
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Doctor_Delete]    Script Date: 13-07-2025 5.47.08 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_Doctor_Delete]
+    @DoctorID INT
+AS
+BEGIN
+    DELETE FROM Doctor WHERE DoctorID = @DoctorID
+END
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_DoctortoDepartment_Delete]    Script Date: 13-07-2025 5.48.17 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_DoctortoDepartment_Delete]
+    @DoctorDepartmentID INT
+AS
+BEGIN
+    DELETE FROM DoctorDepartment WHERE DoctorDepartmentID = @DoctorDepartmentID
+END
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_DoctorsDepartment_select]    Script Date: 13-07-2025 5.48.16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_DoctorsDepartment_select]
+    @DepartmentID INT
+AS
+BEGIN
+    SELECT doc.* 
+    FROM Doctor doc
+    INNER JOIN DoctorDepartment dd ON doc.DoctorID = dd.DoctorID
+    WHERE dd.DepartmentID = @DepartmentID
+END
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_DoctorDepartment_Insert]    Script Date: 13-07-2025 5.48.13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_DoctorDepartment_Insert]
+    @DoctorID INT,
+    @DepartmentID INT,
+    @UserID INT
+AS
+BEGIN
+    INSERT INTO DoctorDepartment (DoctorID, DepartmentID, Created, Modified, UserID)
+    VALUES (@DoctorID, @DepartmentID, GETDATE(), GETDATE(), @UserID)
+END
+
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Patients_SelectById]    Script Date: 13-07-2025 5.48.43 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_Patients_SelectById]
+    @PatientID INT
+AS
+BEGIN
+    SELECT P.PatientID, P.Name, P.DateOfBirth, P.Gender, P.Email, P.Phone, P.Address, P.City, P.State,
+       P.IsActive, P.Created, P.Modified, P.UserID
+	FROM Patient P
+	WHERE P.PatientID = @PatientID
+	ORDER BY P.Name
+
+END
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Patients_Select]    Script Date: 13-07-2025 5.48.42 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_Patients_Select]
+AS
+BEGIN
+    SELECT P.PatientID, P.Name, P.DateOfBirth, P.Gender, P.Email, P.Phone, P.Address, P.City, P.State,
+       P.IsActive, P.Created, P.Modified, U.UserName
+	FROM Patient P
+	INNER JOIN [User] U ON P.UserID = U.UserID
+	ORDER BY P.Name
+END
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Patient_Update]    Script Date: 13-07-2025 5.48.40 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_Patient_Update]
+    @PatientID INT,
+    @Name NVARCHAR(100),
+    @DateOfBirth DATETIME,
+    @Gender NVARCHAR(10),
+    @Email NVARCHAR(100),
+    @Phone NVARCHAR(100),
+    @Address NVARCHAR(250),
+    @City NVARCHAR(100),
+    @State NVARCHAR(100),
+    @IsActive BIT,
+    @UserID INT
+AS
+BEGIN
+    UPDATE Patient
+    SET Name = @Name,
+        DateOfBirth = @DateOfBirth,
+        Gender = @Gender,
+        Email = @Email,
+        Phone = @Phone,
+        Address = @Address,
+        City = @City,
+        State = @State,
+        IsActive = @IsActive,
+        Modified = GETDATE(),
+        UserID = @UserID
+    WHERE PatientID = @PatientID
+END
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Patient_Insert]    Script Date: 13-07-2025 5.48.39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_Patient_Insert]
+    @Name NVARCHAR(100),
+    @DateOfBirth DATETIME,
+    @Gender NVARCHAR(10),
+    @Email NVARCHAR(100),
+    @Phone NVARCHAR(100),
+    @Address NVARCHAR(250),
+    @City NVARCHAR(100),
+    @State NVARCHAR(100),
+    @IsActive BIT = 1,
+    @UserID INT
+AS
+BEGIN
+    INSERT INTO Patient (Name, DateOfBirth, Gender, Email, Phone, Address, City, State, IsActive, Created, Modified, UserID)
+    VALUES (@Name, @DateOfBirth, @Gender, @Email, @Phone, @Address, @City, @State, @IsActive, GETDATE(), GETDATE(), @UserID)
+END
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Patient_Delete]    Script Date: 13-07-2025 5.48.38 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_Patient_Delete]
+    @PatientID INT
+AS
+BEGIN
+    DELETE FROM Patient WHERE PatientID = @PatientID
+END
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Users_Update]    Script Date: 13-07-2025 5.49.24 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_Users_Update]
+    @UserID INT,
+    @UserName NVARCHAR(100),
+    @Password NVARCHAR(100),
+    @Email NVARCHAR(100),
+    @MobileNo NVARCHAR(100),
+    @IsActive BIT
+AS
+BEGIN
+    UPDATE [User]
+    SET UserName = @UserName,Password = @Password,Email = @Email,MobileNo = @MobileNo,IsActive = @IsActive,Modified = GETDATE()
+    WHERE UserID = @UserID
+END
+
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_Users_SelectById]    Script Date: 13-07-2025 5.49.22 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[SP_Users_SelectById]
+	@userid int
+as
+begin
+	select UserID, UserName, Password, Email, MobileNo, IsActive, Created, Modified from [User] where UserID = @userid
+	ORDER BY UserName
+end
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_Users_Select]    Script Date: 13-07-2025 5.49.21 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[SP_Users_Select]
+as
+begin
+	select [UserID],[UserName],[Password],[Email],[MobileNo],[IsActive],[Created],[Modified]
+	from [User]
+	ORDER BY UserName
+end
+
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_Users_Insert]    Script Date: 13-07-2025 5.49.19 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[SP_Users_Insert]
+	@UserName NVARCHAR(100),
+    @Password NVARCHAR(100),
+    @Email NVARCHAR(100),
+    @MobileNo NVARCHAR(100),
+    @IsActive BIT = 1
+as
+begin
+	insert into [User](UserName,Password,Email,MobileNo,IsActive,Modified)
+	values(@UserName,@Password,@Email,@MobileNo,@IsActive,GETDATE())
+end
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Users_Delete]    Script Date: 13-07-2025 5.49.18 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_Users_Delete]
+	@UserId INT
+as 
+begin
+	delete from [User] where UserID=@UserId
+end
+
+
+
+USE [HMS]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_User_Login]    Script Date: 13-07-2025 5.49.17 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[SP_User_Login]
+    @Email NVARCHAR(100),
+    @Password NVARCHAR(100)
+AS
+BEGIN
+    SELECT Email, Password 
+    FROM [User]
+    WHERE Email = @Email AND Password = @Password
+END
+
+
+

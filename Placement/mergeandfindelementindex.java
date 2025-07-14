@@ -8,30 +8,27 @@ public class mergeandfindelementindex {
 
         int array3[] = new int[array1.length + array2.length];
 
-        int i = 0, j = 0, k = 0;
-        while (i < array1.length && j < array2.length) {
-            if (array1[i] < array2[j]) {
-                array3[k++] = array1[i++];
-            } else {
-                array3[k++] = array2[j++];
+        int index = 0;
+        for (int i = 0; i < array1.length; i++) {
+            array3[index++] = array1[i];
+        }
+        for (int i = 0; i < array2.length; i++) {
+            array3[index++] = array2[i];
+        }
+        for (int i = 0; i < array3.length; i++) {
+            for (int j = i + 1; j < array3.length; j++) {
+                if (array3[i] > array3[j]) {
+                    int temp = array3[i];
+                    array3[i] = array3[j];
+                    array3[j] = temp;
+                }
             }
         }
-        while (i < array1.length) {
-            array3[k++] = array1[i++];
+        for (int i = 0; i < array3.length; i++) {
+            System.out.print(array3[i] + " ");
         }
-        while (j < array2.length) {
-            array3[k++] = array2[j++];
-        }
-        for (int a : array3) {
-            System.out.print(a + " ");
-        }
-
         System.out.println();
-        int num = 10;
-        for (int l = 0; l < array3.length; l++) {
-            if (array3[l] == num) {
-                System.out.println(l+1);
-            }
-    }
+        int k = 5;
+        System.out.println("Element Find k = 5 : " + array3[k - 1]);
     }
 }

@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Header = ({title='this is default props'}) => {
   return (
     <header>
